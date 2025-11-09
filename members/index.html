@@ -7,46 +7,27 @@
   <title>Members — Vader: Whiteout</title>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-  :root {
-    --ink: #f4f4f4;
-    --mute: #a7a7a7;
-    --line: rgba(255,255,255,.12);
-    --bg0: #070707;
-    --bg1: #101010;
-    --radius: 20px;
-    --page-max: 1200px;
-    --page-gutter: 24px;
-  }
-  html[data-theme="light"] {
-    --ink: #0b0b0b;
-    --mute: #666666;
-    --line: rgba(0,0,0,.14);
-    --bg0: #f9f9f9;
-    --bg1: #efefef;
-  }
-  * { box-sizing: border-box; }
-  body { margin: 0; color: var(--ink); background: linear-gradient(180deg,var(--bg0),var(--bg1)); font: 16px/1.6 'Inter',system-ui,sans-serif; }
-  a { color: inherit; text-decoration: none; }
-
-  .container { width: min(var(--page-max), calc(100% - (var(--page-gutter) * 2))); margin: 16px auto; }
-  header.topnav { position: sticky; top: 0; z-index: 10; padding: 10px 16px; border-radius: 14px;
-    backdrop-filter: blur(8px); background: rgba(255,255,255,.04); border: 1px solid var(--line); display:flex; gap:12px; align-items:center; }
-  .navlinks { margin: 0 auto; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; width: 100%; }
-  .btn { padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255,255,255,.02); font-weight: 600; transition: .25s; }
-  .btn:hover { transform: translateY(-2px); background: rgba(255,255,255,.05); box-shadow: 0 10px 30px rgba(255,255,255,.06); }
-  .btn-primary { background: #ffffff; color: #0b0b0b; border-color: #ffffff; font-weight: 800; }
-  section.section { border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(16px,2.5vw,28px); background: rgba(255,255,255,.02); box-shadow: 0 10px 30px rgba(255,255,255,.06); margin: 16px auto; }
-  h1,h2 { font-family: 'Crimson Text', serif; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
-  .k { text-transform: uppercase; letter-spacing: .28em; color: var(--mute); font-size: .9rem; }
-  .brand { font-family: 'Crimson Text', serif; font-size: 1.5rem; font-weight: 800; letter-spacing: 0.08em; }
-
-  #themeToggle { display: inline-flex; align-items: center; justify-content: center; padding: 10px; }
-  #themeToggle img { width: 20px; height: 20px; }
-
-  .input { width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255,255,255,.02); color: var(--ink); }
-  .row { display: grid; gap: 12px; grid-template-columns: 1fr auto; align-items: center; }
-  .note { color: var(--mute); font-size: 0.9rem; }
-  footer { text-align: center; margin: 40px auto 20px; font-size: 0.85rem; color: var(--mute); }
+  :root { --ink:#f4f4f4; --mute:#a7a7a7; --line:rgba(255,255,255,.12); --bg0:#070707; --bg1:#101010; --radius:20px; --page-max:1200px; --page-gutter:24px; }
+  html[data-theme="light"] { --ink:#0b0b0b; --mute:#666; --line:rgba(0,0,0,.14); --bg0:#f9f9f9; --bg1:#efefef; }
+  *{box-sizing:border-box}
+  body{margin:0;color:var(--ink);background:linear-gradient(180deg,var(--bg0),var(--bg1));font:16px/1.6 'Inter',system-ui,sans-serif}
+  a{color:inherit;text-decoration:none}
+  .container{width:min(var(--page-max),calc(100% - (var(--page-gutter)*2)));margin:16px auto}
+  header.topnav{position:sticky;top:0;z-index:10;padding:10px 16px;border-radius:14px;backdrop-filter:blur(8px);background:rgba(255,255,255,.04);border:1px solid var(--line);display:flex;gap:12px;align-items:center}
+  .navlinks{margin:0 auto;display:flex;gap:10px;flex-wrap:wrap;justify-content:center;width:100%}
+  .btn{padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.02);font-weight:600;transition:.25s}
+  .btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.05);box-shadow:0 10px 30px rgba(255,255,255,.06)}
+  .btn-primary{background:#fff;color:#0b0b0b;border-color:#fff;font-weight:800}
+  section.section{border:1px solid var(--line);border-radius:var(--radius);padding:clamp(16px,2.5vw,28px);background:rgba(255,255,255,.02);box-shadow:0 10px 30px rgba(255,255,255,.06);margin:16px auto}
+  h1,h2{font-family:'Crimson Text',serif;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+  .k{text-transform:uppercase;letter-spacing:.28em;color:var(--mute);font-size:.9rem}
+  .brand{font-family:'Crimson Text',serif;font-size:1.5rem;font-weight:800;letter-spacing:.08em}
+  #themeToggle{display:inline-flex;align-items:center;justify-content:center;padding:10px}
+  #themeToggle img{width:20px;height:20px}
+  .input{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.02);color:var(--ink)}
+  .row{display:grid;gap:12px;grid-template-columns:1fr auto;align-items:center}
+  .note{color:var(--mute);font-size:.9rem}
+  footer{text-align:center;margin:40px auto 20px;font-size:.85rem;color:var(--mute)}
   </style>
 </head>
 <body>
@@ -76,7 +57,8 @@
   <footer class="container">© Star Wars Club at UC San Diego • Non-commercial student project • Not affiliated with Lucasfilm/Disney</footer>
 
   <script>
-    const ACCESS_CODE = 'CHANGE_ME';  // <<< put your simple code here
+    // SIMPLE gate (no hashes)
+    const ACCESS_CODE = 'CHANGE_ME';       // <<< set your code
     const TOKEN_KEY   = 'vw_ok';
 
     function enter(){
@@ -86,7 +68,8 @@
       if(!v){ msg.textContent = 'Enter the access code.'; return; }
       if(v === ACCESS_CODE){
         try { localStorage.setItem(TOKEN_KEY, '1'); } catch(e){}
-        location.href = '../payments.html';
+        // ABSOLUTE project path to avoid /members/ at domain root
+        location.href = 'https://talanezi.github.io/vader-whiteout-site/payments.html';
       } else {
         msg.textContent = 'Incorrect code. Try again.';
       }
