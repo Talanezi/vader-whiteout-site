@@ -27,7 +27,7 @@
     <div class="brand">Vader: Whiteout</div>
     <nav class="navlinks">
       <a class="btn" href="https://talanezi.github.io/vader-whiteout-site/">Home</a>
-      <a class="btn" href="./members/">Members</a>
+      <a class="btn" href="https://talanezi.github.io/vader-whiteout-site/members/">Members</a>
     </nav>
   </header>
 
@@ -52,11 +52,11 @@
     (function gate(){
       try{
         if (localStorage.getItem(TOKEN_KEY) !== '1') {
-          // IMPORTANT: use relative path so it works on project sites
-          location.replace('./members/');
+          // ABSOLUTE project path to avoid /members/ at domain root
+          location.replace('https://talanezi.github.io/vader-whiteout-site/members/');
         }
       } catch(e) {
-        location.replace('./members/');
+        location.replace('https://talanezi.github.io/vader-whiteout-site/members/');
       }
     })();
   </script>
