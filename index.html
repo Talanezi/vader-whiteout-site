@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -7,8 +6,9 @@
 <title>Vader: Whiteout — Interactive Artbook</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&amp;family=Fraunces:opsz,wght@9..144,700;9..144,800&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
-<style>:root {
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Fraunces:opsz,wght@9..144,700;9..144,800&family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
   --ink: #f4f4f4;
   --mute: #a7a7a7;
   --line: rgba(255,255,255,.12);
@@ -17,14 +17,30 @@
   --radius: 20px;
   --page-max: 1200px;
   --page-gutter: 24px; /* slightly wider boxes */
-} * { box-sizing: border-box; } body { margin: 0; color: var(--ink); background: linear-gradient(180deg,var(--bg0),var(--bg1)); font: 16px/1.6 'Inter',system-ui,sans-serif; } a { color: inherit; text-decoration: none; }  .hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; image-rendering: auto; filter: contrast(1.04) saturate(.9); } .hero .veil { position: absolute; inset: 0; background: linear-gradient(180deg,rgba(0,0,0,.06),rgba(0,0,0,.45)); } .hero .copy { position: relative; z-index: 1; padding: 20px 22px; } .eyebrow { color: #222222; letter-spacing: .28em; text-transform: uppercase; font-size: .8rem; } h1.display { font-family: 'Crimson Text', serif; font-weight: 800; line-height: 1.06; font-size: clamp(2rem,4.2vw,2.9rem); margin: .25rem 0 0; letter-spacing: .01em; } .topnav { position: sticky; top: 0; z-index: 10; padding: 10px 16px; margin: 12px; border-radius: 14px; backdrop-filter: blur(8px); background: rgba(255,255,255,.04); border: 1px solid var(--line); display: flex; gap: 12px; align-items: center; } .brand { font-family: 'Crimson Pro', serif; font-weight: 400; font-size: 1.03rem; } .navlinks { margin: 0 auto; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; width: 100%; } .btn { padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255,255,255,.02); font-weight: 600; transition: .25s; } .btn:hover { transform: translateY(-2px); background: rgba(255,255,255,.05); box-shadow: 0 10px 30px rgba(255,255,255,.06); } .btn-primary { background: #ffffff; color: #0b0b0b; border-color: #ffffff; font-weight: 800; }  h2.section-title { font-family: 'Crimson Text', serif; font-weight: 800; font-size: clamp(1.6rem,2.2vw,1.9rem); margin: 0 0 8px; } .k { text-transform: uppercase; letter-spacing: .28em; color: var(--mute); font-size: .8rem; } html { scroll-behavior: smooth; } section.section, #fundraising { scroll-margin-top: 96px; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; color: var(--ink); background: linear-gradient(180deg,var(--bg0),var(--bg1)); font: 16px/1.6 'Inter',system-ui,sans-serif; }
+a { color: inherit; text-decoration: none; }
+
+.hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; image-rendering: auto; filter: contrast(1.04) saturate(.9); }
+.hero .veil { position: absolute; inset: 0; background: linear-gradient(180deg,rgba(0,0,0,.06),rgba(0,0,0,.45)); }
+.hero .copy { position: relative; z-index: 1; padding: 20px 22px; }
+.eyebrow { color: #222222; letter-spacing: .28em; text-transform: uppercase; font-size: .8rem; }
+h1.display { font-family: 'Crimson Text', serif; font-weight: 800; line-height: 1.06; font-size: clamp(2rem,4.2vw,2.9rem); margin: .25rem 0 0; letter-spacing: .01em; }
+
+.topnav { position: sticky; top: 0; z-index: 10; padding: 10px 16px; margin: 12px; border-radius: 14px; backdrop-filter: blur(8px); background: rgba(255,255,255,.04); border: 1px solid var(--line); display: flex; gap: 12px; align-items: center; }
+.brand { font-family: 'Crimson Pro', serif; font-weight: 400; font-size: 1.03rem; }
+.navlinks { margin: 0 auto; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; width: 100%; }
+.btn { padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255,255,255,.02); font-weight: 600; transition: .25s; }
+.btn:hover { transform: translateY(-2px); background: rgba(255,255,255,.05); box-shadow: 0 10px 30px rgba(255,255,255,.06); }
+.btn-primary { background: #ffffff; color: #0b0b0b; border-color: #ffffff; font-weight: 800; }
+
+h2.section-title { font-family: 'Crimson Text', serif; font-weight: 800; font-size: clamp(1.6rem,2.2vw,1.9rem); margin: 0 0 8px; }
+.k { text-transform: uppercase; letter-spacing: .28em; color: var(--mute); font-size: .8rem; }
+html { scroll-behavior: smooth; }
+section.section, #fundraising { scroll-margin-top: 96px; }
 
 .title-banner .eyebrow { color: var(--mute); letter-spacing: .28em; text-transform: uppercase; font-size: .78rem; }
-
-
-
-
-
 .title-banner .eyebrow { font-size: 1rem; letter-spacing: .28em; color: var(--mute); }
 .title-banner h1 {
   font-family: 'Crimson Text', serif !important;
@@ -39,11 +55,14 @@
 header.topnav { position: sticky; top: 0; z-index: 10; padding: 10px 16px; border-radius: 14px;
   backdrop-filter: blur(8px); background: rgba(255,255,255,.04); border: 1px solid var(--line); display:flex; gap:12px; align-items:center; }
 .navlinks { margin: 0 auto; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; width: 100%; }
+
 .hero { position: relative; height: clamp(360px, 56vh, 640px); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; margin-top: 12px; margin-bottom: 16px; }
 .hero img { position:absolute; inset:0; width:100%; height:100%; object-fit: cover; filter: contrast(1.04) saturate(.9); }
+
 .title-banner { text-align:center; margin-top: 8px; margin-bottom: 6px; }
 .title-banner .eyebrow { font-size:1rem; letter-spacing:.28em; color: var(--mute); text-transform: uppercase; }
 .title-banner h1 { font-family:'Crimson Text', serif; font-weight:800; letter-spacing:.10em; text-transform:uppercase; line-height:1.04; font-size: clamp(2.8rem, 7vw, 5.4rem); margin: 4px 0 8px; }
+
 section.section { border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(16px,2.5vw,28px); background: rgba(255,255,255,.02); box-shadow: 0 10px 30px rgba(255,255,255,.06); margin: 16px auto; }
 
 /* Unified comfortable gutters for all main boxes */
@@ -81,101 +100,223 @@ html[data-theme="light"] .btn-primary { background: #111111; color: #ffffff; bor
 #themeToggle { display: inline-flex; align-items: center; justify-content: center; padding: 10px; }
 #themeToggle img { width: 20px; height: 20px; }
 </style>
-<link href="https://fonts.googleapis.com/css?family=Crimson+Text&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css?family=Crimson+Pro&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css?family=Libre+Franklin&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Crimson+Text&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Crimson+Pro&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Libre+Franklin&display=swap" rel="stylesheet"/>
 </head>
 <body>
-<div class="title-banner"><div class="eyebrow">A STAR WARS FAN FILM</div><h1>VADER: WHITEOUT</h1></div><header class="topnav">
-<nav class="navlinks"><a class="btn btn-primary" href="./members/">Members Page</a><a class="btn" href="#story">Story</a><a class="btn" href="#lookbook">Lookbook</a><a class="btn" href="#team">Team</a><a class="btn" href="#departments">Departments</a><a class="btn" href="#log">Log</a><a class="btn" href="#budget">Budget</a><a class="btn" href="#faq">FAQ</a><a class="btn" href="#contact">Contact</a>
-<button aria-label="Toggle light or dark mode" class="btn" id="themeToggle" type="button"><img alt="Dark mode icon" src="https://i.postimg.cc/63Mr6Vgt/output-onlinepngtools-3.png" style="width:20px;height:20px;display:block;"/></button></nav>
-</header>
-<main class="stage">
-<section class="hero">
-<img alt="Vader: Whiteout header" src="https://gcdnb.pbrd.co/images/cPr01jdg9q4z.png?o=1"/>
-<div class="veil"></div>
-<div class="copy">
-<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
-</div>
-</div>
-</section>
-<section class="section" id="story">
-<div class="k">Narrative</div>
-<h2 class="section-title">Story</h2>
-<p>In the wake of a blinding whiteout, a lone figure confronts the cost of order. Discipline versus compassion, the allure of power, and identity under pressure guide the tone and structure.</p>
-<ul class="pretty" style="margin:8px 0 0 18px">
-</ul><strong>In the shadowed realm between life and death, Darth Vader faces the echoes of his past and the haunting truth of what his power has cost him.</strong>
-</section>
-<section class="section" id="lookbook">
-<div class="k">Visual Language</div>
-<h2 class="section-title">Lookbook</h2>
-<div class="grid" style="display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
-<div>
-<div class="k">Palette</div>
-<p>Ethereal and surreal, subtle purples weave through natural light. Hints of crimson and amber pulse around Vader, adding warmth to an otherwise otherworldly calm.</p>
-</div>
-<div>
-<div class="k">Framing</div>
-<p>Wide, contemplative shots place Vader against vast horizons, emphasizing solitude and scale. </p>
-</div>
-<div>
-<div class="k">Optics</div>
-<p>Dreamlike distortion through wide primes and low contrast; flares, reflections, and depth shifts give the sense of a reality folding in on itself.</p>
-</div>
-<div></div>
-</div>
-</section>
-<section class="section" id="team">
-<div class="k">People</div>
-<h2 class="section-title">Core Team</h2>
-<ul style="margin:8px 0 0 18px"><li><b>Executive Producer:</b> Thamer Alanezi</li><li><b>Producers:</b> Evan Huang, Alex Loaiza Franciscotti, Thuwaiba Kazim</li><li><b>Associate Producer:</b> Rachel Zheng</li><li><b>Director:</b> Sardor Danier</li><li><b>Writers:</b> Michael Lu, Roux Reilly</li><li><b>1st AD:</b> Emma Thompson</li><li><b>Property Master:</b> Jeffrey Keppler</li><li><b>Hair &amp; Makeup:</b> Liam Johansson (Lead), Nyla (Key Makeup Artist)</li><li><b>Marketing Director:</b> Yvanna Matusea</li></ul>
-</section>
-<section class="section" id="departments">
-<div class="k">Crew</div>
-<h2 class="section-title">Departments</h2>
-<div class="grid" style="display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))"><div><div class="k">Camera</div><ul class="pretty" style="margin:8px 0 0 18px"><li>DP • 1st AC • 2nd AC • DIT • Operators</li></ul></div><div><div class="k">Grip &amp; Electric</div><ul class="pretty" style="margin:8px 0 0 18px"><li>Gaffer (TBD) • Key Grip (TBD)</li><li>Lighting • Rigging • Power</li></ul></div><div><div class="k">Art Department</div><ul class="pretty" style="margin:8px 0 0 18px"><li>Production Designer (TBD)</li><li>Art Director • Set Dresser</li></ul></div><div><div class="k">Props</div><ul class="pretty" style="margin:8px 0 0 18px"><li>Property Master: Jeffrey Keppler</li><li>Prop Fabrication • Set Dressing</li></ul></div><div><div class="k">Costumes</div><ul class="pretty" style="margin:8px 0 0 18px"><li>Lead (TBD)</li><li>Wardrobe • Fittings • Continuity</li></ul></div><div><div class="k">Hair &amp; Makeup</div><ul class="pretty" style="margin:8px 0 0 18px"><li>Lead: Liam Johansson • Key: Nyla</li><li>Styling • Prosthetics • Hero Looks</li></ul></div><div><div class="k">Choreography &amp; Stunts</div><ul class="pretty" style="margin:8px 0 0 18px"><li>Fight Design • Rehearsals • Safety</li></ul></div><div><div class="k">Cast</div><ul class="pretty" style="margin:8px 0 0 18px"><li>Casting Director (TBD)</li><li>Principal • Supporting • Background • Voice</li></ul></div><div><div class="k">Music</div><ul class="pretty" style="margin:8px 0 0 18px"><li>Composer (TBD)</li><li>Orchestration • Recording Logistics</li></ul></div><div><div class="k">Editorial</div><ul class="pretty" style="margin:8px 0 0 18px"><li>Lead Editor • Assistant Editors</li><li>Picture Lock • Deliverables</li></ul></div><div><div class="k">Sound</div><ul class="pretty" style="margin:8px 0 0 18px"><li>Design • Foley • ADR • Mix</li></ul></div><div><div class="k">VFX</div><ul class="pretty" style="margin:8px 0 0 18px"><li>CGI • Compositing • Simulation • Look-dev</li></ul></div><div><div class="k">Assistant Directors</div><ul class="pretty" style="margin:8px 0 0 18px"><li>1st AD: Emma Thompson</li><li>2nd AD (TBD) • Runs PAs &amp; Talent Holding</li></ul></div><div><div class="k">Marketing</div><ul class="pretty" style="margin:8px 0 0 18px"><li>Director: Yvanna Matusea</li><li>BTS • Graphics • Social • Trailer Drops</li></ul></div></div>
-</section>
-<section class="section" id="log">
-<div class="k">Updates</div>
-<h2 class="section-title">Production Log</h2>
-<ul class="pretty" style="margin:8px 0 0 18px">
-<li>
-<b>Drafting:</b> Outline passes and sequence breakdowns in progress.
-                    </li>
-<li>
-<b>Crew:</b> Department head interviews ongoing.
-                    </li>
-</ul>
-</section>
-<section class="section" id="budget">
-<div class="k">Resources</div>
-<h2 class="section-title">Budget &amp; Use of Funds</h2>
-<p>Goal: $10,000 • Current: 0%</p>
-<p>Allocation includes props, wardrobe, locations, stunts, insurance, and post‑production (color, sound, festivals).</p>
-</section><section class="section" id="faq">
-<div class="k">Info</div>
-<h2 class="section-title">FAQ</h2>
-<ul class="pretty" style="margin:8px 0 0 18px">
-<li>
-<b>Is this official?</b> No. This is a non‑commercial student project, not affiliated with Lucasfilm/Disney.
-                    </li>
-<li>
-<b>How are funds handled?</b> Through the Star Wars Club at UC San Diego and the Vader: Whiteout Production team for production costs only.
-                    </li>
-<li>
-<b>Safety?</b> Choreography and set safety are core. No live weapons. Trained supervision.
-                    </li>
-</ul>
-</section>
-<section class="section" id="contact">
-<div class="k">Reach Us</div>
-<h2 class="section-title">Contact</h2>
-<p>Questions, collaboration, or press: <a href="mailto:Starwarsatucsd@gmail.com">Starwarsatucsd@gmail.com</a></p>
-</section>
-</main>
-<footer>© Star Wars Club at UC San Diego • Non‑commercial student project • Not affiliated with Lucasfilm/Disney</footer>
-<!-- Smooth scroll with sticky-header offset so top buttons always work -->
-<script>
+  <div class="title-banner">
+    <div class="eyebrow">A STAR WARS FAN FILM</div>
+    <h1>VADER: WHITEOUT</h1>
+  </div>
+
+  <header class="topnav">
+    <nav class="navlinks">
+      <a class="btn btn-primary" href="./members/">Members Page</a>
+      <a class="btn" href="#story">Story</a>
+      <a class="btn" href="#lookbook">Lookbook</a>
+      <a class="btn" href="#team">Team</a>
+      <a class="btn" href="#departments">Departments</a>
+      <a class="btn" href="#log">Log</a>
+      <a class="btn" href="#budget">Budget</a>
+      <a class="btn" href="#faq">FAQ</a>
+      <a class="btn" href="#contact">Contact</a>
+      <button aria-label="Toggle light or dark mode" class="btn" id="themeToggle" type="button">
+        <img alt="Dark mode icon" src="https://i.postimg.cc/63Mr6Vgt/output-onlinepngtools-3.png" style="width:20px;height:20px;display:block;"/>
+      </button>
+    </nav>
+  </header>
+
+  <main class="stage">
+    <section class="hero">
+      <img alt="Vader: Whiteout header" src="https://gcdnb.pbrd.co/images/cPr01jdg9q4z.png?o=1"/>
+      <div class="veil"></div>
+      <div class="copy">
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px"></div>
+      </div>
+    </section>
+
+    <section class="section" id="story">
+      <div class="k">Narrative</div>
+      <h2 class="section-title">Story</h2>
+      <!-- Removed the extra sentence per request -->
+      <ul class="pretty" style="margin:8px 0 0 18px"></ul>
+      <strong>In the shadowed realm between life and death, Darth Vader faces the echoes of his past and the haunting truth of what his power has cost him.</strong>
+    </section>
+
+    <section class="section" id="lookbook">
+      <div class="k">Visual Language</div>
+      <h2 class="section-title">Lookbook</h2>
+      <div class="grid" style="display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+        <div>
+          <div class="k">Palette</div>
+          <p>Ethereal and surreal, subtle purples weave through natural light. Hints of crimson and amber pulse around Vader, adding warmth to an otherwise otherworldly calm.</p>
+        </div>
+        <div>
+          <div class="k">Framing</div>
+          <p>Wide, contemplative shots place Vader against vast horizons, emphasizing solitude and scale.</p>
+        </div>
+        <div>
+          <div class="k">Optics</div>
+          <p>Dreamlike distortion through wide primes and low contrast; flares, reflections, and depth shifts give the sense of a reality folding in on itself.</p>
+        </div>
+        <div></div>
+      </div>
+    </section>
+
+    <section class="section" id="team">
+      <div class="k">People</div>
+      <h2 class="section-title">Core Team</h2>
+      <ul style="margin:8px 0 0 18px">
+        <li><b>Director:</b> Sardor Danier</li>
+        <li><b>Executive Producer:</b> Thamer Alanezi</li>
+        <li><b>Producers:</b> Evan Huang, Alex Loaiza Franciscotti, Thuwaiba Kazim</li>
+        <li><b>Associate Producers:</b> Rachel Zheng</li>
+        <li><b>Writers:</b> Michael Lu, Roux Reilly</li>
+        <li><b>1st AD:</b> Emma Thompson</li>
+        <li><b>Property Master:</b> Jeffrey Keppler</li>
+        <li><b>Marketing Director:</b> Yvanna Matusea</li>
+      </ul>
+    </section>
+
+    <section class="section" id="departments">
+      <div class="k">Crew</div>
+      <h2 class="section-title">Departments</h2>
+      <div class="grid" style="display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+        <div>
+          <div class="k">Camera</div>
+          <ul class="pretty" style="margin:8px 0 0 18px">
+            <li>DP • 1st AC • 2nd AC • DIT • Operators</li>
+          </ul>
+        </div>
+        <div>
+          <div class="k">Grip &amp; Electric</div>
+          <ul class="pretty" style="margin:8px 0 0 18px">
+            <li>Gaffer (TBD) • Key Grip (TBD)</li>
+            <li>Lighting • Rigging • Power</li>
+          </ul>
+        </div>
+        <div>
+          <div class="k">Art Department</div>
+          <ul class="pretty" style="margin:8px 0 0 18px">
+            <li>Production Designer (TBD)</li>
+            <li>Art Director • Set Dresser</li>
+          </ul>
+        </div>
+        <div>
+          <div class="k">Props</div>
+          <ul class="pretty" style="margin:8px 0 0 18px">
+            <li>Property Master: Jeffrey Keppler</li>
+            <li>Prop Fabrication • Set Dressing</li>
+          </ul>
+        </div>
+        <div>
+          <div class="k">Costumes</div>
+          <ul class="pretty" style="margin:8px 0 0 18px">
+            <li>Lead (TBD)</li>
+            <li>Wardrobe • Fittings • Continuity</li>
+          </ul>
+        </div>
+        <div>
+          <div class="k">Hair &amp; Makeup</div>
+          <ul class="pretty" style="margin:8px 0 0 18px">
+            <li>Lead: Liam Johansson • Key: Nyla Rahimi</li>
+            <li>Styling • Prosthetics • Hero Looks</li>
+          </ul>
+        </div>
+        <div>
+          <div class="k">Choreography &amp; Stunts</div>
+          <ul class="pretty" style="margin:8px 0 0 18px">
+            <li>Fight Design • Rehearsals • Safety</li>
+          </ul>
+        </div>
+        <div>
+          <div class="k">Cast</div>
+          <ul class="pretty" style="margin:8px 0 0 18px">
+            <li>Casting Director (TBD)</li>
+            <li>Principal • Supporting • Background • Voice</li>
+          </ul>
+        </div>
+        <div>
+          <div class="k">Music</div>
+          <ul class="pretty" style="margin:8px 0 0 18px">
+            <li>Composer (TBD)</li>
+            <li>Orchestration • Recording Logistics</li>
+          </ul>
+        </div>
+        <div>
+          <div class="k">Editorial</div>
+          <ul class="pretty" style="margin:8px 0 0 18px">
+            <li>Lead Editor • Assistant Editors</li>
+            <li>Picture Lock • Deliverables</li>
+          </ul>
+        </div>
+        <div>
+          <div class="k">Sound</div>
+          <ul class="pretty" style="margin:8px 0 0 18px">
+            <li>Design • Foley • ADR • Mix</li>
+          </ul>
+        </div>
+        <div>
+          <div class="k">VFX</div>
+          <ul class="pretty" style="margin:8px 0 0 18px">
+            <li>CGI • Compositing • Simulation • Look-dev</li>
+          </ul>
+        </div>
+        <div>
+          <div class="k">Assistant Directors</div>
+          <ul class="pretty" style="margin:8px 0 0 18px">
+            <li>1st AD: Emma Thompson</li>
+            <li>2nd AD (TBD) • Runs PAs &amp; Talent Holding</li>
+          </ul>
+        </div>
+        <div>
+          <div class="k">Marketing</div>
+          <ul class="pretty" style="margin:8px 0 0 18px">
+            <li>Director: Yvanna Matusea</li>
+            <li>BTS • Graphics • Social • Trailer Drops</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="log">
+      <div class="k">Updates</div>
+      <h2 class="section-title">Production Log</h2>
+      <ul class="pretty" style="margin:8px 0 0 18px">
+        <li><b>Drafting:</b> Outline passes and sequence breakdowns in progress.</li>
+        <li><b>Crew:</b> Department head interviews ongoing.</li>
+      </ul>
+    </section>
+
+    <section class="section" id="budget">
+      <div class="k">Resources</div>
+      <h2 class="section-title">Budget &amp; Use of Funds</h2>
+      <p>Goal: $10,000 • Current: 0%</p>
+      <p>Allocation includes props, wardrobe, locations, stunts, insurance, and post-production (color, sound, festivals).</p>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="k">Info</div>
+      <h2 class="section-title">FAQ</h2>
+      <ul class="pretty" style="margin:8px 0 0 18px">
+        <li><b>Is this official?</b> No. This is a non-commercial student project, not affiliated with Lucasfilm/Disney.</li>
+        <li><b>How are funds handled?</b> Through the Star Wars Club at UC San Diego and the Vader: Whiteout Production team for production costs only.</li>
+        <li><b>Safety?</b> Choreography and set safety are core. No live weapons. Trained supervision.</li>
+      </ul>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="k">Reach Us</div>
+      <h2 class="section-title">Contact</h2>
+      <p>Questions, collaboration, or press: <a href="mailto:Starwarsatucsd@gmail.com">Starwarsatucsd@gmail.com</a></p>
+    </section>
+  </main>
+
+  <footer>© Star Wars Club at UC San Diego • Non-commercial student project • Not affiliated with Lucasfilm/Disney</footer>
+
+  <!-- Smooth scroll with sticky-header offset so top buttons always work -->
+  <script>
     (function(){
       const header = document.querySelector('.topnav');
       const getOffset = () => (header ? header.getBoundingClientRect().height + 8 : 0);
@@ -194,41 +335,42 @@ html[data-theme="light"] .btn-primary { background: #111111; color: #ffffff; bor
       window.addEventListener('load',()=>{ if(location.hash) scrollToHash(location.hash); });
     })();
   </script>
-<script>
-(function(){
-  const KEY = 'theme';
-  const ICON_LIGHT = 'https://www.svgrepo.com/show/432507/light-mode.svg';
-  const ICON_DARK  = 'https://i.postimg.cc/63Mr6Vgt/output-onlinepngtools-3.png';
-  const root = document.documentElement;
-  const btn = document.getElementById('themeToggle');
 
-  function setIcon(theme){
-    if (!btn) return;
-    const src = (theme === 'light') ? ICON_LIGHT : ICON_DARK;
-    const alt = (theme === 'light') ? 'Light mode icon' : 'Dark mode icon';
-    btn.innerHTML = '<img src="' + src + '" alt="' + alt + '">';
-    btn.setAttribute('aria-label', theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode');
-  }
+  <script>
+    (function(){
+      const KEY = 'theme';
+      const ICON_LIGHT = 'https://www.svgrepo.com/show/432507/light-mode.svg';
+      const ICON_DARK  = 'https://i.postimg.cc/63Mr6Vgt/output-onlinepngtools-3.png';
+      const root = document.documentElement;
+      const btn = document.getElementById('themeToggle');
 
-  function apply(theme){
-    root.setAttribute('data-theme', theme);
-    setIcon(theme);
-    try { localStorage.setItem(KEY, theme); } catch(e){}
-  }
+      function setIcon(theme){
+        if (!btn) return;
+        const src = (theme === 'light') ? ICON_LIGHT : ICON_DARK;
+        const alt = (theme === 'light') ? 'Light mode icon' : 'Dark mode icon';
+        btn.innerHTML = '<img src="' + src + '" alt="' + alt + '">';
+        btn.setAttribute('aria-label', theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode');
+      }
 
-  // Initialize
-  let saved = null;
-  try { saved = localStorage.getItem(KEY); } catch(e){}
-  apply(saved === 'light' ? 'light' : 'dark');
+      function apply(theme){
+        root.setAttribute('data-theme', theme);
+        setIcon(theme);
+        try { localStorage.setItem(KEY, theme); } catch(e){}
+      }
 
-  if (btn){
-    btn.addEventListener('click', function(){
-      const cur = root.getAttribute('data-theme') || 'dark';
-      const next = cur === 'light' ? 'dark' : 'light';
-      apply(next);
-    });
-  }
-})();
-</script>
+      // Initialize
+      let saved = null;
+      try { saved = localStorage.getItem(KEY); } catch(e){}
+      apply(saved === 'light' ? 'light' : 'dark');
+
+      if (btn){
+        btn.addEventListener('click', function(){
+          const cur = root.getAttribute('data-theme') || 'dark';
+          const next = cur === 'light' ? 'dark' : 'light';
+          apply(next);
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
