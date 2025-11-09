@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /payments.html
+Allow: /
+Sitemap: https://vaderwhiteout.com/sitemap.xml
