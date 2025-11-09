@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>SHA-256 Helper (Local)</title>
+<style>
+body{font-family:system-ui,Arial,sans-serif;padding:20px;max-width:720px;margin:auto}
+input,button{font-size:16px;padding:10px;border-radius:10px;border:1px solid #ccc}
+pre{background:#111;color:#eee;padding:12px;border-radius:10px;overflow:auto}
+.row{display:grid;grid-template-columns:1fr auto;gap:10px}
+</style>
+</head>
+<body>
+<h1>Compute SHA-256 (hex) for your access code</h1>
+<div class="row">
+  <input id="code" type="text" placeholder="Enter your code (keep it long & unique)"/>
+  <button id="go">Hash</button>
+</div>
+<pre id="out">—</pre>
+<script>
+async function sha256Hex(s){ const b=await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
+return Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join('');}
+document.getElementById('go').onclick=async()=>{
+ const v=document.getElementById('code').value.trim();
+ document.getElementById('out').textContent = v? await sha256Hex(v): '—';
+};
+</script>
+</body>
+</html>
