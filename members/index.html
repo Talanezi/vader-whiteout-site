@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Members — Vader: Whiteout</title>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #f4f4f4;
+  --mute: #a7a7a7;
+  --line: rgba(255,255,255,.12);
+  --bg0: #070707;
+  --bg1: #101010;
+  --radius: 20px;
+  --page-max: 1200px;
+  --page-gutter: 24px;
+}
+html[data-theme="light"] {
+  --ink: #0b0b0b;
+  --mute: #666666;
+  --line: rgba(0,0,0,.14);
+  --bg0: #f9f9f9;
+  --bg1: #efefef;
+}
+* { box-sizing: border-box; }
+body { margin: 0; color: var(--ink); background: linear-gradient(180deg,var(--bg0),var(--bg1)); font: 16px/1.6 'Inter',system-ui,sans-serif; }
+a { color: inherit; text-decoration: none; }
+
+.container { width: min(var(--page-max), calc(100% - (var(--page-gutter) * 2))); margin: 16px auto; }
+header.topnav { position: sticky; top: 0; z-index: 10; padding: 10px 16px; border-radius: 14px;
+  backdrop-filter: blur(8px); background: rgba(255,255,255,.04); border: 1px solid var(--line); display:flex; gap:12px; align-items:center; }
+.navlinks { margin: 0 auto; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; width: 100%; }
+.btn { padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255,255,255,.02); font-weight: 600; transition: .25s; }
+.btn:hover { transform: translateY(-2px); background: rgba(255,255,255,.05); box-shadow: 0 10px 30px rgba(255,255,255,.06); }
+.btn-primary { background: #ffffff; color: #0b0b0b; border-color: #ffffff; font-weight: 800; }
+section.section { border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(16px,2.5vw,28px); background: rgba(255,255,255,.02); box-shadow: 0 10px 30px rgba(255,255,255,.06); margin: 16px auto; }
+h1,h2 { font-family: 'Crimson Text', serif; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.k { text-transform: uppercase; letter-spacing: .28em; color: var(--mute); font-size: .9rem; }
+
+#themeToggle { display: inline-flex; align-items: center; justify-content: center; padding: 10px; }
+#themeToggle img { width: 20px; height: 20px; }
+
+.input { width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255,255,255,.02); color: var(--ink); }
+.row { display: grid; gap: 12px; grid-template-columns: 1fr auto; align-items: center; }
+.note { color: var(--mute); font-size: 0.9rem; }
+footer { text-align: center; margin: 40px auto 20px; font-size: 0.85rem; color: var(--mute); }
+</style>
+</head>
+<body>
+  <header class="topnav container">
+    <div class="brand">Vader: Whiteout</div>
+    <nav class="navlinks">
+      <a class="btn" href="/">Home</a>
+      <button class="btn" id="themeToggle" type="button" aria-label="Toggle theme"><img src="https://i.postimg.cc/63Mr6Vgt/output-onlinepngtools-3.png" alt="Dark mode icon"></button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="section">
+      <div class="k">Members</div>
+      <h1>Enter Access Code</h1>
+      <div class="row" style="margin-top:12px;">
+        <input id="code" class="input" type="password" placeholder="Access code" autocomplete="current-password">
+        <button id="enter" class="btn btn-primary">Enter</button>
+      </div>
+      <p id="msg" class="note" style="margin-top:10px;"></p>
+      <p class="note">Private fundraiser access for approved members only.</p>
+    </section>
+  </main>
+
+  <footer class="container">© Star Wars Club at UC San Diego • Non‑commercial student project • Not affiliated with Lucasfilm/Disney</footer>
+
+  <script>
+  // IMPORTANT: Set EXPECTED_HASH to the SHA-256 (hex) of your shared access code.
+  // How to compute:
+  // 1) Open your browser console and run:
+  //    const s='YOUR_CODE'; crypto.subtle.digest('SHA-256', new TextEncoder().encode(s)).then(buf=>Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('')).then(console.log)
+  // 2) Copy the printed hex string and paste into EXPECTED_HASH below.
+  const EXPECTED_HASH = 'REPLACE_WITH_SHA256_HEX';
+
+  async function sha256Hex(s) { 
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
+    return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+  }
+
+  async function handleEnter(){
+    const code = document.getElementById('code').value.trim();
+    const msg = document.getElementById('msg');
+    msg.textContent = '';
+    if(!code) { msg.textContent = 'Enter the access code.'; return; }
+    try {
+      const hash = await sha256Hex(code);
+      if (hash === EXPECTED_HASH) { 
+        localStorage.setItem('vw_access', EXPECTED_HASH);
+        window.location.href = '../payments.html';
+      } else {
+        msg.textContent = 'Incorrect code. Try again.';
+      }
+    } catch (e) {
+      msg.textContent = 'Your browser blocked crypto functions. Try a modern browser.';
+    }
+  }
+
+  document.getElementById('enter').addEventListener('click', handleEnter);
+  document.getElementById('code').addEventListener('keydown', (e)=>{ if(e.key==='Enter') handleEnter(); });
+  </script>
+
+<script>
+(function(){
+  const KEY = 'theme';
+  const ICON_LIGHT = 'https://www.svgrepo.com/show/432507/light-mode.svg';
+  const ICON_DARK  = 'https://i.postimg.cc/63Mr6Vgt/output-onlinepngtools-3.png';
+  const root = document.documentElement;
+  const btn = document.getElementById('themeToggle');
+  function setIcon(theme){
+    if (!btn) return;
+    const src = (theme === 'light') ? ICON_LIGHT : ICON_DARK;
+    const alt = (theme === 'light') ? 'Light mode icon' : 'Dark mode icon';
+    btn.innerHTML = '<img src="' + src + '" alt="' + alt + '">';
+    btn.setAttribute('aria-label', theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode');
+  }
+  function apply(theme){
+    root.setAttribute('data-theme', theme);
+    setIcon(theme);
+    try { localStorage.setItem(KEY, theme); } catch(e){}
+  }
+  let saved = null;
+  try { saved = localStorage.getItem(KEY); } catch(e){}
+  apply(saved === 'light' ? 'light' : 'dark');
+  if (btn){
+    btn.addEventListener('click', function(){
+      const cur = root.getAttribute('data-theme') || 'dark';
+      const next = cur === 'light' ? 'dark' : 'light';
+      apply(next);
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
