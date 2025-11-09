@@ -490,5 +490,18 @@ html[data-theme="light"] .video-wrap {
       }
     })();
   </script>
+  <footer class="section" style="text-align:center;margin-top:40px;padding:20px 0;border-top:1px solid var(--line);opacity:.85">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
+    <img src="https://i.postimg.cc/Cx6KdT2W/Newlogo.jpg" alt="Star Wars Club UCSD logo" style="width:70px;height:auto;opacity:.9;filter:var(--invert-logo, none);">
+    <div style="font-size:.9rem;letter-spacing:.03em">© 2025 Star Wars Club at UC San Diego</div>
+  </div>
+</footer>
+
+<!-- optional: automatic inversion for light mode -->
+<style>
+html[data-theme="light"] img[alt*="logo"] {
+  filter: invert(1) brightness(0.1) contrast(1.1);
+}
+</style>
 </body>
 </html>
