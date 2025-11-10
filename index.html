@@ -32,6 +32,8 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Fraunces:opsz,wght@9..144,700;9..144,800&family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
 <style>
+figure:hover{ transform: translateY(-4px); transition: transform .2s ease; }
+.navlinks .active{ box-shadow: inset 0 -2px 0 currentColor; }
 :root {
   --ink: #f4f4f4;
   --mute: #a7a7a7;
@@ -443,6 +445,14 @@ html[data-theme="light"] .video-wrap {
         <li><b>How are funds handled?</b> Through the Star Wars Club at UC San Diego and the Vader: Whiteout Production team for production costs only.</li>
         <li><b>Safety?</b> Choreography and set safety are core. No live weapons. Trained supervision.</li>
       </ul>
+      <p style="margin-top:10px">
+  <strong>About the Club.</strong> The Star Wars Club at UC San Diego is a student organization producing non-commercial fan projects and community events.
+  Follow updates on Instagram at <a href="https://instagram.com/darthvaderucsd" target="_blank" rel="noopener">@darthvaderucsd</a>.
+</p>
+<p class="k" style="letter-spacing:.18em;margin-top:8px">Safety Policy</p>
+<p style="margin-top:4px">
+  We prioritize cast and crew safety: rehearsed choreography, no live weapons, site permissions, and trained on-set supervision.
+</p>
     </section>
 
     <section class="section" id="contact">
@@ -474,6 +484,26 @@ html[data-theme="light"] .video-wrap {
       window.addEventListener('load',()=>{ if(location.hash) scrollToHash(location.hash); });
     })();
   </script>
+  <script>
+  // Highlight current section in nav
+  (function(){
+    const links = Array.from(document.querySelectorAll('.navlinks a[href^="#"]'));
+    const sections = Array.from(document.querySelectorAll('section.section, #teaser'));
+    const byId = id => links.find(a => a.getAttribute('href') === '#' + id);
+
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if (e.isIntersecting) {
+          links.forEach(a=>a.classList.remove('active'));
+          const link = byId(e.target.id);
+          if (link) link.classList.add('active');
+        }
+      });
+    }, { rootMargin: "-45% 0px -50% 0px", threshold: 0.01 });
+
+    sections.forEach(s => s.id && io.observe(s));
+  })();
+</script>
 
   <script>
     (function(){
@@ -532,6 +562,11 @@ html[data-theme="light"] img[alt*="logo"] {
   filter: invert(1) brightness(0.1) contrast(1.1);
 }
 </style>
-
+<button id="toTop" class="btn" style="position:fixed;right:16px;bottom:16px;display:none;z-index:20">Top</button>
+  <script>
+  const toTop = document.getElementById('toTop');
+  addEventListener('scroll', ()=>{ toTop.style.display = (scrollY>600)?'block':'none'; });
+  toTop.onclick = ()=> scrollTo({top:0,behavior:'smooth'});
+</script>
 </body>
 </html>
