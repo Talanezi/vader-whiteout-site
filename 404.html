@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>404 — Page Not Found</title>
+  <meta name="robots" content="noindex, nofollow"/>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:#f4f4f4; --mute:#a7a7a7; --line:rgba(255,255,255,.12);
+      --bg0:#070707; --bg1:#101010; --radius:20px;
+      --page-max:1200px; --page-gutter:24px;
+    }
+    html[data-theme="light"] {
+      --ink:#0b0b0b; --mute:#666; --line:rgba(0,0,0,.14);
+      --bg0:#f9f9f9; --bg1:#efefef;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      color:var(--ink);
+      background:linear-gradient(180deg,var(--bg0),var(--bg1));
+      font:16px/1.6 'Inter',system-ui,sans-serif;
+      display:flex;justify-content:center;align-items:center;
+      min-height:100vh;padding:20px;
+    }
+
+    .card{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:rgba(255,255,255,.02);
+      box-shadow:0 10px 30px rgba(255,255,255,.06);
+      text-align:center;
+      padding:clamp(24px,4vw,48px);
+      max-width:500px;
+      width:100%;
+    }
+
+    h1{
+      font-family:'Crimson Text',serif;
+      font-weight:800;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      font-size:clamp(2.2rem,4vw,3rem);
+      margin:0 0 8px;
+    }
+    p{color:var(--mute);margin-top:0;margin-bottom:24px}
+    a.btn{
+      display:inline-block;
+      padding:12px 18px;
+      border-radius:12px;
+      font-weight:700;
+      border:1px solid var(--line);
+      text-decoration:none;
+      color:var(--ink);
+      background:rgba(255,255,255,.04);
+      transition:.25s;
+    }
+    a.btn:hover{
+      transform:translateY(-2px);
+      background:rgba(255,255,255,.08);
+      box-shadow:0 10px 30px rgba(255,255,255,.08);
+    }
+    html[data-theme="light"] a.btn{
+      background:rgba(0,0,0,.04);
+    }
+    html[data-theme="light"] a.btn:hover{
+      background:rgba(0,0,0,.08);
+      box-shadow:0 10px 30px rgba(0,0,0,.08);
+    }
+
+    footer{
+      text-align:center;
+      margin-top:32px;
+      color:var(--mute);
+      font-size:.85rem;
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{transition:none !important;scroll-behavior:auto !important}
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img src="https://i.postimg.cc/qRwSM0bh/Newlogo-removebg-preview.png" alt="Star Wars Club UCSD logo"
+         style="width:80px;height:auto;opacity:.9;margin-bottom:12px;filter:var(--invert-logo,none)">
+    <h1>404</h1>
+    <p>This page has vanished into the Force.</p>
+    <a href="https://vaderwhiteout.com" class="btn">Return Home</a>
+    <footer>© 2025 Star Wars Club at UC San Diego • Non-commercial student project</footer>
+  </div>
+
+  <script>
+    // auto theme consistency with rest of site
+    (function(){
+      const KEY='theme';
+      const root=document.documentElement;
+      let saved=null;
+      try{saved=localStorage.getItem(KEY);}catch(e){}
+      root.setAttribute('data-theme', saved==='light' ? 'light' : 'dark');
+    })();
+  </script>
+
+  <style>
+    /* invert logo in light mode */
+    html[data-theme="light"] img[alt*="logo"] {
+      filter: invert(1) brightness(0.1) contrast(1.1);
+    }
+  </style>
+</body>
+</html>
