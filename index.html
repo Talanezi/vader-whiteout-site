@@ -490,31 +490,21 @@ html[data-theme="light"] .video-wrap {
       }
     })();
   </script>
-  <footer class="section" style="text-align:center;margin-top:40px;padding:20px 0;border-top:1px solid var(--line);opacity:.85">
+<footer class="section" style="text-align:center;margin-top:40px;padding:20px 0;border-top:1px solid var(--line);opacity:.85">
   <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
     <img src="https://i.postimg.cc/qRwSM0bh/Newlogo-removebg-preview.png" alt="Star Wars Club UCSD logo" style="width:70px;height:auto;opacity:.9;filter:var(--invert-logo, none);">
     <div style="font-size:.9rem;letter-spacing:.03em">© 2025 Star Wars Club at UC San Diego</div>
-    <div class="social" style="margin-top:6px">
-  <a href="https://instagram.com/darthvaderucsd" target="_blank" rel="noopener" aria-label="Vader: Whiteout on Instagram">
-    <!-- Instagram glyph (currentColor so it works in light/dark) -->
-    <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5a5.5 5.5 0 1 1 0 11a5.5 5.5 0 0 1 0-11Zm0 2a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7Zm5.75-.75a1 1 0 1 1 0 2a1 1 0 0 1 0-2Z"/></svg>
-    <span>@darthvaderucsd</span>
-  </a>
-  <a href="https://instagram.com/starwarsatucsd" target="_blank" rel="noopener" aria-label="Star Wars Club at UCSD on Instagram">
-    <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5a5.5 5.5 0 1 1 0 11a5.5 5.5 0 0 1 0-11Zm0 2a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7Zm5.75-.75a1 1 0 1 1 0 2a1 1 0 0 1 0-2Z"/></svg>
-    <span>@starwarsatucsd</span>
-  </a>
-</div>
+    <a href="https://instagram.com/darthvaderucsd" target="_blank" rel="noopener" 
+       style="display:inline-flex;align-items:center;gap:6px;font-weight:600;
+              color:var(--ink);text-decoration:none;opacity:.9;margin-top:4px;">
+      <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor" 
+           style="width:17px;height:17px;">
+        <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5a5.5 5.5 0 1 1 0 11a5.5 5.5 0 0 1 0-11Zm0 2a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7Zm5.75-.75a1 1 0 1 1 0 2a1 1 0 0 1 0-2Z"/>
+      </svg>
+      <span>@darthvaderucsd</span>
+    </a>
   </div>
 </footer>
-
-<!-- optional: automatic inversion for light mode -->
-  /* socials */
-.social { display:flex; gap:12px; align-items:center; justify-content:center; }
-.social a { display:inline-flex; gap:8px; align-items:center; padding:8px 10px; border:1px solid var(--line);
-  border-radius:12px; text-decoration:none; font-weight:600; background:rgba(255,255,255,.02); }
-html[data-theme="light"] .social a { background: rgba(0,0,0,.03); }
-.social svg { width:18px; height:18px; display:block; }
 
 <style>
 html[data-theme="light"] img[alt*="logo"] {
