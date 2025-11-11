@@ -32,6 +32,17 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Fraunces:opsz,wght@9..144,700;9..144,800&family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
 <style>
+  html[data-theme="light"] .dept-toolbar .apply-main{
+  background:#111 !important;
+  color:#fff !important;
+  border-color:#111 !important;
+  box-shadow:0 8px 24px rgba(0,0,0,.12);
+}
+
+/* Light-mode fix: keep initials high-contrast (white) even when --ink goes dark */
+html[data-theme="light"] .lead .avatar[data-initials]::after{
+  color:#ffffff !important;
+}
   /* ===== Departments layout (cards + avatars + pills) ===== */
 .dept-toolbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:8px 0 14px}
 .dept-toolbar .apply-main{
@@ -400,7 +411,16 @@ html[data-theme="light"] .video-wrap {
         <div class="crew-pill"><span class="n">Roux Reilly</span><span class="r">Assistant Writer</span></div>
       </div>
     </article>
-
+    
+     <!-- Marketing -->
+<article class="dept-card">
+  <div class="dept-head"><h3>Marketing</h3></div>
+  <div class="lead">
+    <!-- real photo, no initials -->
+    <div class="avatar" style="background-image:url('https://iili.io/KmN1vZx.jpg')"></div>
+    <div class="who"><div class="name">Yvanna Matusea</div><div class="role">Marketing Director</div></div>
+  </div>
+</article>
     <!-- Camera -->
     <article class="dept-card">
       <div class="dept-head"><h3>Camera</h3></div>
@@ -530,15 +550,6 @@ html[data-theme="light"] .video-wrap {
         <!-- real photo, no initials -->
         <div class="avatar" style="background-image:url('https://i.postimg.cc/1XDCTQk7/Image.jpg')"></div>
         <div class="who"><div class="name">Sardor Danier</div><div class="role">VFX Supervisor</div></div>
-      </div>
-    </article>
-
-    <!-- Marketing -->
-    <article class="dept-card">
-      <div class="dept-head"><h3>Marketing</h3></div>
-      <div class="lead">
-        <div class="avatar" data-initials="YM"></div>
-        <div class="who"><div class="name">Yvanna Matusea</div><div class="role">Marketing Director</div></div>
       </div>
     </article>
   </div>
