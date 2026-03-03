@@ -416,6 +416,249 @@ html[data-theme="light"]{
   </style>
 </head>
 
+<script>
+(function(){
+  const root = document.documentElement;
+  const canvas = document.getElementById('wbwCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d', { alpha: true });
+
+  let W = 0, H = 0, DPR = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+
+  const palette = {
+    dark: {
+      bg0: [4, 7, 13],
+      bg1: [6, 16, 28],
+      fog: [18, 38, 58],
+      star: [235, 245, 255],
+      thread: [94, 231, 255],
+      thread2: [155, 140, 255],
+      horizon: [140, 230, 255]
+    },
+    light: {
+      bg0: [245, 248, 255],
+      bg1: [232, 240, 250],
+      fog: [190, 215, 235],
+      star: [20, 30, 40],
+      thread: [14, 165, 233],
+      thread2: [124, 58, 237],
+      horizon: [0, 120, 170]
+    }
+  };
+
+  let theme = (root.getAttribute('data-theme') === 'light') ? 'light' : 'dark';
+
+  const stars = [];
+  const STAR_COUNT = 420;
+
+  const threads = [];
+  const THREAD_COUNT = 10;
+
+  function rand(a,b){ return a + Math.random() * (b-a); }
+  function rgba(rgb, a){
+    return `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${a})`;
+  }
+
+  function resize(){
+    W = Math.floor(window.innerWidth);
+    H = Math.floor(window.innerHeight);
+    canvas.width  = Math.floor(W * DPR);
+    canvas.height = Math.floor(H * DPR);
+    canvas.style.width = W + 'px';
+    canvas.style.height = H + 'px';
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+  }
+
+  function init(){
+    stars.length = 0;
+    for (let i=0;i<STAR_COUNT;i++){
+      stars.push({
+        x: Math.random(),
+        y: Math.random(),
+        r: rand(0.25, 1.25),
+        a: rand(0.08, 0.55),
+        tw: rand(0.0006, 0.0018),
+        ph: rand(0, Math.PI*2)
+      });
+    }
+
+    threads.length = 0;
+    for (let i=0;i<THREAD_COUNT;i++){
+      threads.push({
+        seed: rand(0, 1000),
+        phase: rand(0, Math.PI*2),
+        speed: rand(0.00004, 0.00009),
+        width: rand(0.8, 2.2),
+        alpha: rand(0.06, 0.14),
+        tilt: rand(-0.8, 0.8),
+        offset: rand(-0.25, 0.25)
+      });
+    }
+  }
+
+  function setTheme(t){
+    theme = (t === 'light') ? 'light' : 'dark';
+  }
+
+  // Watch your theme toggle (data-theme changes)
+  new MutationObserver(() => {
+    setTheme(root.getAttribute('data-theme'));
+  }).observe(root, { attributes:true, attributeFilter:['data-theme'] });
+
+  function drawBackground(p){
+    // Base gradient
+    const g = ctx.createLinearGradient(0,0,0,H);
+    g.addColorStop(0, rgba(p.bg0, 1));
+    g.addColorStop(1, rgba(p.bg1, 1));
+    ctx.fillStyle = g;
+    ctx.fillRect(0,0,W,H);
+
+    // Nebula fog
+    ctx.globalCompositeOperation = 'screen';
+    const fog1 = ctx.createRadialGradient(W*0.30, H*0.72, 0, W*0.30, H*0.72, Math.max(W,H)*0.75);
+    fog1.addColorStop(0, rgba(p.fog, 0.18));
+    fog1.addColorStop(1, rgba(p.fog, 0));
+    ctx.fillStyle = fog1;
+    ctx.fillRect(0,0,W,H);
+
+    const fog2 = ctx.createRadialGradient(W*0.72, H*0.32, 0, W*0.72, H*0.32, Math.max(W,H)*0.70);
+    fog2.addColorStop(0, rgba(p.fog, 0.12));
+    fog2.addColorStop(1, rgba(p.fog, 0));
+    ctx.fillStyle = fog2;
+    ctx.fillRect(0,0,W,H);
+
+    ctx.globalCompositeOperation = 'source-over';
+  }
+
+  function drawStars(p, t){
+    ctx.save();
+    ctx.globalCompositeOperation = 'screen';
+    for (const s of stars){
+      const tw = 0.65 + 0.35 * Math.sin(t*s.tw + s.ph);
+      const a = s.a * tw;
+
+      const x = s.x * W;
+      const y = s.y * H;
+
+      ctx.fillStyle = rgba(p.star, a);
+      ctx.beginPath();
+      ctx.arc(x, y, s.r, 0, Math.PI*2);
+      ctx.fill();
+    }
+    ctx.restore();
+  }
+
+  function threadX(th, y, t){
+    // y: 0..1, t in ms
+    const time = t * th.speed + th.phase;
+    const w1 = 0.40 * Math.sin(time + y*2.2 + th.seed);
+    const w2 = 0.18 * Math.sin(time*1.6 + y*5.2 + th.seed*0.3);
+    const base = 0.5 + th.offset + th.tilt*(y-0.5);
+    return base + w1 + w2;
+  }
+
+  function drawThreads(p, t){
+    ctx.save();
+    ctx.globalCompositeOperation = 'lighter';
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+
+    for (let i=0;i<threads.length;i++){
+      const th = threads[i];
+      const isAlt = (i % 3 === 0);
+      const col = isAlt ? p.thread2 : p.thread;
+
+      ctx.strokeStyle = rgba(col, th.alpha);
+      ctx.lineWidth = th.width;
+
+      // glow
+      ctx.shadowColor = rgba(col, 0.22);
+      ctx.shadowBlur = 18;
+
+      ctx.beginPath();
+      // Draw a smooth-ish curve using small segments
+      const steps = 70;
+      for (let s=0;s<=steps;s++){
+        const yy = s/steps;
+        const xN = threadX(th, yy, t);
+        const x = xN * W;
+        const y = (yy * 1.35 - 0.15) * H; // extend past edges
+        if (s === 0) ctx.moveTo(x,y);
+        else ctx.lineTo(x,y);
+      }
+      ctx.stroke();
+    }
+
+    // Cross threads (diagonals)
+    ctx.shadowBlur = 16;
+    ctx.lineWidth = 1.2;
+    ctx.strokeStyle = rgba(p.thread, 0.07);
+    for (let k=0;k<3;k++){
+      const y0 = rand(-0.1, 0.3) * H;
+      const y1 = rand(0.7, 1.15) * H;
+      const x0 = rand(-0.2, 0.2) * W;
+      const x1 = rand(0.8, 1.2) * W;
+      ctx.beginPath();
+      ctx.moveTo(x0, y0);
+      ctx.bezierCurveTo(W*0.35, H*0.35, W*0.65, H*0.55, x1, y1);
+      ctx.stroke();
+    }
+
+    ctx.restore();
+  }
+
+  function drawHorizon(p){
+    ctx.save();
+    ctx.globalCompositeOperation = 'screen';
+    const y = H * 0.76;
+
+    // Main horizon
+    ctx.strokeStyle = rgba(p.horizon, theme === 'light' ? 0.26 : 0.18);
+    ctx.lineWidth = 2;
+    ctx.shadowColor = rgba(p.horizon, theme === 'light' ? 0.22 : 0.18);
+    ctx.shadowBlur = 18;
+
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    ctx.lineTo(W, y);
+    ctx.stroke();
+
+    // Soft duplicate lines
+    ctx.shadowBlur = 0;
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = rgba(p.horizon, theme === 'light' ? 0.12 : 0.10);
+    ctx.beginPath();
+    ctx.moveTo(0, y+6);
+    ctx.lineTo(W, y+6);
+    ctx.stroke();
+
+    ctx.restore();
+  }
+
+  let raf = 0;
+  function frame(t){
+    const p = palette[theme];
+    ctx.clearRect(0,0,W,H);
+
+    drawBackground(p);
+    drawStars(p, t);
+    drawThreads(p, t);
+    drawHorizon(p);
+
+    raf = requestAnimationFrame(frame);
+  }
+
+  resize();
+  init();
+  cancelAnimationFrame(raf);
+  raf = requestAnimationFrame(frame);
+
+  window.addEventListener('resize', () => {
+    resize();
+  }, { passive:true });
+})();
+</script>
+  
 <body>
   <canvas id="wbwCanvas" aria-hidden="true"></canvas>
   <header class="topnav container">
