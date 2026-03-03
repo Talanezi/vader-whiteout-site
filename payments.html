@@ -4,71 +4,337 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="robots" content="noindex, nofollow"/>
-  <title>Members — Support Vader: Whiteout</title>
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <title>Support — Vader: Whiteout</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Crimson+Text:wght@700&family=Fraunces:opsz,wght@9..144,700;9..144,800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
+
   <style>
-  :root {
-    --ink:#f4f4f4; --mute:#a7a7a7; --line:rgba(255,255,255,.12);
-    --bg0:#070707; --bg1:#101010; --radius:20px;
-    --page-max:1200px; --page-gutter:24px;
-    --accent:#84cc16;
-    --card: rgba(255,255,255,.02);
-    --shadow: 0 10px 30px rgba(255,255,255,.06);
-  }
-  html[data-theme="light"]{
-    --ink:#0b0b0b; --mute:#666; --line:rgba(0,0,0,.14);
-    --bg0:#f9f9f9; --bg1:#efefef; --card: rgba(0,0,0,.03);
-    --shadow: 0 10px 30px rgba(0,0,0,.08); --accent:#16a34a;
-  }
-  *{box-sizing:border-box}
-  body{margin:0;color:var(--ink);background:linear-gradient(180deg,var(--bg0),var(--bg1));font:16px/1.6 'Inter',system-ui,sans-serif}
-  a{color:inherit;text-decoration:none}
+    :root{
+      --ink:#f4f4f4;
+      --mute:#a7a7a7;
+      --line:rgba(255,255,255,.12);
+      --bg0:#070707;
+      --bg1:#101010;
 
-  .container{width:min(var(--page-max),calc(100% - (var(--page-gutter)*2)));margin:16px auto}
-  header.topnav{position:sticky;top:0;z-index:10;padding:10px 16px;border-radius:14px;backdrop-filter:blur(8px);background:rgba(255,255,255,.04);border:1px solid var(--line);display:flex;gap:12px;align-items:center}
-  .navlinks{margin:0 auto;display:flex;gap:10px;flex-wrap:wrap;justify-content:center;width:100%}
-  .btn{padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.02);font-weight:600;transition:.25s;color:var(--ink)}
-  .btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.05);box-shadow:var(--shadow)}
-  .btn-primary{background:#fff !important;color:#0b0b0b !important;border-color:#fff !important;font-weight:800}
-  .brand{font-family:'Crimson Text',serif;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+      --radius:20px;
+      --page-max:1200px;
+      --page-gutter:24px;
 
-  h1,h2{font-family:'Crimson Text',serif;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin:0}
-  .muted{color:var(--mute);font-size:.92rem}
-  .chip{display:inline-block;border:1px solid var(--line);padding:6px 10px;border-radius:999px;font-weight:600}
+      --card:rgba(255,255,255,.02);
+      --card2:rgba(255,255,255,.04);
+      --shadow:0 10px 30px rgba(255,255,255,.06);
 
-  section.section{border:1px solid var(--line);border-radius:var(--radius);padding:clamp(16px,2.5vw,28px);background:var(--card);box-shadow:var(--shadow);margin:16px auto}
-  .card{border:1px solid var(--line);background:var(--card);border-radius:16px;padding:14px}
-  .grid{display:grid;gap:14px}
-  @media (min-width:720px){ .grid.cols-2{grid-template-columns:1fr 1fr} .grid.cols-3{grid-template-columns:repeat(3,1fr)} }
+      --accent:#84cc16;
+      --accent2:#22d3ee;
+      --danger:#fb7185;
+    }
+    html[data-theme="light"]{
+      --ink:#0b0b0b;
+      --mute:#666;
+      --line:rgba(0,0,0,.14);
+      --bg0:#f9f9f9;
+      --bg1:#efefef;
 
-  .bar{height:14px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden;border:1px solid var(--line)}
-  .bar>span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#22d3ee);width:0%}
+      --card:rgba(0,0,0,.03);
+      --card2:rgba(0,0,0,.05);
+      --shadow:0 10px 30px rgba(0,0,0,.08);
 
-  .payrow{display:grid;gap:12px;grid-template-columns:1fr auto}
-  @media (max-width:720px){ .payrow{grid-template-columns:1fr} }
+      --accent:#16a34a;
+      --accent2:#22d3ee;
+    }
 
-  .paybtn{display:flex;gap:10px;align-items:center;justify-content:center;padding:16px 18px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.04);font-weight:800}
-  /* make the donate button unmistakably white and elevated */
-  .paybtn.btn-primary{box-shadow:0 8px 24px rgba(255,255,255,.18)}
-  html[data-theme="light"] .paybtn.btn-primary{box-shadow:0 8px 24px rgba(0,0,0,.12)}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--ink);
+      background:linear-gradient(180deg,var(--bg0),var(--bg1));
+      font:16px/1.6 'Inter',system-ui,sans-serif;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{
+      width:min(var(--page-max),calc(100% - (var(--page-gutter)*2)));
+      margin:16px auto;
+    }
 
-  .icons{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-  .icon{height:22px;width:auto;display:block}
+    /* ===== Topnav (match main vibe) ===== */
+    header.topnav{
+      position:sticky;top:0;z-index:10;
+      padding:10px 16px;border-radius:14px;
+      backdrop-filter:blur(8px);
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      display:flex;gap:12px;align-items:center;
+    }
+    html[data-theme="light"] header.topnav{
+      background:rgba(0,0,0,.06);
+    }
+    .brand{
+      font-family:'Crimson Text',serif;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-size:1.02rem;
+      white-space:nowrap;
+    }
+    .navlinks{
+      margin:0 auto;
+      display:flex;gap:10px;flex-wrap:wrap;
+      justify-content:center;width:100%;
+    }
+    .btn{
+      padding:10px 12px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:rgba(255,255,255,.02);
+      font-weight:700;
+      transition:.25s;
+      color:var(--ink);
+    }
+    html[data-theme="light"] .btn{background:rgba(0,0,0,.04)}
+    .btn:hover{
+      transform:translateY(-2px);
+      background:rgba(255,255,255,.05);
+      box-shadow:var(--shadow);
+    }
+    html[data-theme="light"] .btn:hover{background:rgba(0,0,0,.08)}
+    .btn-primary{
+      background:#fff !important;
+      color:#0b0b0b !important;
+      border-color:#fff !important;
+      font-weight:900;
+    }
+    html[data-theme="light"] .btn-primary{
+      background:#111 !important;
+      color:#fff !important;
+      border-color:#111 !important;
+    }
+    #themeToggle{display:inline-flex;align-items:center;justify-content:center;padding:10px}
+    #themeToggle img{width:20px;height:20px;display:block}
 
-  table.clean{width:100%;border-collapse:collapse}
-  table.clean th, table.clean td{padding:10px;border-bottom:1px solid var(--line);text-align:left}
-  footer{text-align:center;margin:40px auto 20px;font-size:.85rem;color:var(--mute)}
+    /* ===== Page blocks ===== */
+    section.section{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:clamp(16px,2.5vw,28px);
+      background:var(--card);
+      box-shadow:var(--shadow);
+      margin:16px auto;
+      position:relative;
+      overflow:hidden;
+    }
 
-  #themeToggle{display:inline-flex;align-items:center;justify-content:center;padding:10px}
-  #themeToggle img{width:20px;height:20px}
+    .k{
+      text-transform:uppercase;
+      letter-spacing:.28em;
+      color:var(--mute);
+      font-size:.8rem;
+    }
+    h1,h2,h3{
+      font-family:'Crimson Text',serif;
+      font-weight:900;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      margin:0;
+    }
+    h1{font-size:clamp(1.9rem,3.2vw,2.4rem);line-height:1.1}
+    h2{font-size:clamp(1.4rem,2.1vw,1.7rem);line-height:1.15}
+    h3{font-size:1.02rem;line-height:1.15}
+    .muted{color:var(--mute);font-size:.95rem}
+
+    .grid{display:grid;gap:14px}
+    @media (min-width:860px){
+      .grid.cols-2{grid-template-columns:1.25fr .75fr}
+      .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    }
+
+    .card{
+      border:1px solid var(--line);
+      background:var(--card);
+      border-radius:16px;
+      padding:14px;
+    }
+
+    /* ===== Premium hero glow ===== */
+    .heroGlow::before{
+      content:"";
+      position:absolute;inset:-2px;
+      background:
+        radial-gradient(1000px 420px at 20% -10%, rgba(132,204,22,.22), transparent 60%),
+        radial-gradient(900px 420px at 110% 10%, rgba(34,211,238,.16), transparent 62%),
+        radial-gradient(900px 500px at 50% 120%, rgba(255,255,255,.06), transparent 70%);
+      pointer-events:none;
+    }
+    html[data-theme="light"] .heroGlow::before{
+      background:
+        radial-gradient(1000px 420px at 20% -10%, rgba(22,163,74,.18), transparent 60%),
+        radial-gradient(900px 420px at 110% 10%, rgba(34,211,238,.12), transparent 62%),
+        radial-gradient(900px 500px at 50% 120%, rgba(0,0,0,.04), transparent 70%);
+    }
+
+    /* ===== Progress ===== */
+    .chip{
+      display:inline-flex;align-items:center;gap:8px;
+      border:1px solid var(--line);
+      padding:7px 11px;border-radius:999px;
+      font-weight:800;
+      background:rgba(255,255,255,.02);
+    }
+    html[data-theme="light"] .chip{background:rgba(0,0,0,.03)}
+    .statsRow{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+    .bigAmt{
+      font-size:clamp(1.6rem,2.8vw,2.1rem);
+      font-weight:950;
+      letter-spacing:.01em;
+    }
+    .bar{
+      height:14px;border-radius:999px;
+      background:rgba(255,255,255,.08);
+      overflow:hidden;border:1px solid var(--line);
+    }
+    html[data-theme="light"] .bar{background:rgba(0,0,0,.08)}
+    .bar > span{
+      display:block;height:100%;
+      width:0%;
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+    }
+
+    /* ===== Donate panel ===== */
+    .payrow{display:grid;gap:12px;grid-template-columns:1fr auto}
+    @media (max-width:860px){ .payrow{grid-template-columns:1fr} }
+
+    .paybtn{
+      display:flex;gap:10px;align-items:center;justify-content:center;
+      padding:16px 18px;border-radius:14px;border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      font-weight:950;
+      transition:.25s;
+    }
+    .paybtn:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+    .paybtn.btn-primary{
+      box-shadow:0 14px 38px rgba(255,255,255,.18);
+    }
+    html[data-theme="light"] .paybtn.btn-primary{
+      box-shadow:0 14px 38px rgba(0,0,0,.14);
+    }
+
+    .icons{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .icon{height:22px;width:auto;display:block;opacity:.92}
+
+    .trustRow{
+      display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px;
+      color:var(--mute);font-size:.9rem;
+    }
+    .trustPill{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:7px 10px;border:1px solid var(--line);border-radius:999px;
+      background:rgba(255,255,255,.02);
+    }
+    html[data-theme="light"] .trustPill{background:rgba(0,0,0,.03)}
+
+    /* ===== Donor wall ===== */
+    table.clean{width:100%;border-collapse:collapse}
+    table.clean th, table.clean td{padding:10px;border-bottom:1px solid var(--line);text-align:left}
+    table.clean th{color:var(--mute);font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:.78rem}
+
+    .donorBadges{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .badge{
+      display:flex;flex-direction:column;gap:2px;
+      min-width:220px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px;
+      background:rgba(255,255,255,.02);
+      transition:.2s;
+    }
+    html[data-theme="light"] .badge{background:rgba(0,0,0,.03)}
+    .badge:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+    .badge .bTop{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+    .badge .bName{font-weight:900}
+    .badge .bAmt{font-weight:950}
+    .badge .bSub{color:var(--mute);font-size:.9rem}
+
+    /* ===== Allocation pills ===== */
+    .alloc{display:flex;flex-direction:column;gap:10px;margin-top:10px}
+    .allocItem{
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:10px 12px;
+      background:rgba(255,255,255,.02);
+    }
+    html[data-theme="light"] .allocItem{background:rgba(0,0,0,.03)}
+    .allocTop{display:flex;justify-content:space-between;gap:10px;align-items:center}
+    .allocTop b{letter-spacing:.01em}
+    .allocBar{height:10px;border-radius:999px;border:1px solid var(--line);overflow:hidden;margin-top:8px;background:rgba(255,255,255,.06)}
+    html[data-theme="light"] .allocBar{background:rgba(0,0,0,.06)}
+    .allocBar span{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+
+    /* ===== Tiers cards (premium) ===== */
+    .tierCard{
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:rgba(255,255,255,.02);
+      padding:14px;
+      position:relative;
+      overflow:hidden;
+      transition:.2s;
+    }
+    html[data-theme="light"] .tierCard{background:rgba(0,0,0,.03)}
+    .tierCard:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+    .tierTop{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+    .tierName{font-weight:950;letter-spacing:.02em}
+    .tierAmt{color:var(--mute);font-weight:800}
+    .tierTag{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border:1px solid var(--line);border-radius:999px;
+      font-weight:900;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;
+      background:rgba(255,255,255,.02);
+      margin-top:10px;
+    }
+    html[data-theme="light"] .tierTag{background:rgba(0,0,0,.03)}
+    .tierCard.featured::before{
+      content:"";
+      position:absolute;inset:-2px;
+      background:
+        radial-gradient(900px 320px at 20% -10%, rgba(132,204,22,.22), transparent 60%),
+        radial-gradient(700px 260px at 110% 10%, rgba(34,211,238,.15), transparent 62%);
+      pointer-events:none;
+    }
+    .tierCard.featured{border-color:rgba(132,204,22,.35)}
+
+    /* ===== FAQ ===== */
+    details.faq{
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:rgba(255,255,255,.02);
+      padding:12px 14px;
+    }
+    html[data-theme="light"] details.faq{background:rgba(0,0,0,.03)}
+    details.faq summary{
+      cursor:pointer;
+      font-weight:900;
+      letter-spacing:.02em;
+      list-style:none;
+    }
+    details.faq summary::-webkit-details-marker{display:none}
+    details.faq .muted{margin:8px 0 0}
+
+    footer{
+      text-align:center;
+      margin:40px auto 20px;
+      font-size:.85rem;
+      color:var(--mute);
+    }
   </style>
 </head>
+
 <body>
   <header class="topnav container">
     <div class="brand">Vader: Whiteout</div>
     <nav class="navlinks">
       <a class="btn" href="https://talanezi.github.io/vader-whiteout-site/">Home</a>
       <a class="btn" href="https://talanezi.github.io/vader-whiteout-site/members/">Members</a>
+      <a class="btn" href="#donors">Donors</a>
       <button class="btn" id="themeToggle" type="button" aria-label="Toggle theme">
         <img src="assets/img/dark.png" alt="Dark mode icon">
       </button>
@@ -77,83 +343,261 @@
 
   <main class="container">
 
-    <!-- Progress + Donate -->
-    <section class="section">
-      <h1>Support the Production</h1>
-      <p class="muted">Non-commercial student film by the Star Wars Club at UC San Diego. Gifts only.</p>
-
-      <div class="grid cols-2" style="margin-top:12px">
-        <!-- Progress -->
-        <div class="card">
-          <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
-            <div class="chip">Goal: $10,000</div>
-            <div class="muted" style="margin-left:auto">Raised</div>
-            <div id="raisedLabel" class="chip">$0 (0%)</div>
-          </div>
-          <div class="bar" style="margin-top:10px"><span id="progressFill" style="width:0%"></span></div>
-          <p class="muted" style="margin:8px 0 0">Update numbers in the script at the bottom.</p>
+    <!-- HERO / FUNDRAISER -->
+    <section class="section heroGlow" id="top">
+      <div class="k">Fundraiser</div>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;margin-top:6px">
+        <div style="max-width:72ch">
+          <h1>Support the Production</h1>
+          <p class="muted" style="margin:8px 0 0">
+            Vader: Whiteout is a non-commercial student project by the Star Wars Club at UC San Diego. Donations support production costs only.
+          </p>
         </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end">
+          <span class="chip">Fundraiser Live</span>
+          <span class="chip" id="goalChip">Goal: $10,000</span>
+          <span class="chip" id="raisedChip">$0 raised</span>
+        </div>
+      </div>
 
-        <!-- Donate -->
+      <div class="grid cols-2" style="margin-top:14px">
+        <!-- Left: Donate + Progress -->
         <div class="card">
-          <div class="icons" id="brandIcons"></div>
-          <div class="payrow" style="margin-top:10px">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+            <div class="icons" id="brandIcons"></div>
+            <div class="chip" id="pctChip">0% funded</div>
+          </div>
+
+          <div class="statsRow">
+            <div class="bigAmt" id="raisedBig">$0</div>
+            <div class="muted">toward <b id="goalText">$10,000</b></div>
+          </div>
+
+          <div class="bar" style="margin-top:10px">
+            <span id="progressFill" style="width:0%"></span>
+          </div>
+
+          <div class="payrow" style="margin-top:12px">
             <a id="paypalMe" class="paybtn btn-primary" href="#" target="_blank" rel="noopener">
-              <strong>Donate now</strong>
+              Donate now
             </a>
             <button id="copyPayPal" class="btn">Copy link</button>
           </div>
           <div id="copyMsg" class="muted" style="margin-top:6px"></div>
+
+          <div class="trustRow">
+            <span class="trustPill">Secure checkout via platform</span>
+            <span class="trustPill">Non-commercial student film</span>
+            <span class="trustPill">Production costs only</span>
+          </div>
+        </div>
+
+        <!-- Right: Where funds go -->
+        <div class="card">
+          <div class="k">Transparency</div>
+          <h2 style="margin-top:6px">Where funds go</h2>
+          <p class="muted" style="margin:8px 0 0">
+            Your donation helps us shoot safely and finish with professional post-production.
+          </p>
+
+          <div class="alloc" id="allocWrap">
+            <div class="allocItem">
+              <div class="allocTop"><b>Props, Wardrobe, Sets</b><span class="muted">35%</span></div>
+              <div class="allocBar"><span style="width:35%"></span></div>
+            </div>
+            <div class="allocItem">
+              <div class="allocTop"><b>Locations & Logistics</b><span class="muted">20%</span></div>
+              <div class="allocBar"><span style="width:20%"></span></div>
+            </div>
+            <div class="allocItem">
+              <div class="allocTop"><b>Stunts Safety & Rehearsal</b><span class="muted">20%</span></div>
+              <div class="allocBar"><span style="width:20%"></span></div>
+            </div>
+            <div class="allocItem">
+              <div class="allocTop"><b>Post: Color & Sound</b><span class="muted">25%</span></div>
+              <div class="allocBar"><span style="width:25%"></span></div>
+            </div>
+          </div>
+
+          <div class="muted" style="margin-top:10px">
+            Questions: <a href="mailto:Starwarsatucsd@gmail.com"><b>Starwarsatucsd@gmail.com</b></a>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Top Donors -->
-    <section class="section">
-      <h2>Top Donors</h2>
-      <table class="clean" style="margin-top:10px">
-        <thead><tr><th>Name</th><th>Amount</th><th>Date</th></tr></thead>
-        <tbody id="donorTable">
-          <!-- Add rows manually as you go -->
-          <!-- Example:
-          <tr><td>Jane R.</td><td>$250</td><td>Nov 12, 2025</td></tr>
-          -->
-        </tbody>
-      </table>
-    </section>
+    <!-- DONORS -->
+    <section class="section" id="donors">
+      <div class="k">Recognition</div>
+      <h2 style="margin-top:6px">Donors</h2>
+      <p class="muted" style="margin:8px 0 0">
+        Thank you to everyone backing the film. Donors may choose to remain anonymous.
+      </p>
 
-    <!-- Tiers -->
-    <section class="section">
-      <h2>Donation Tiers</h2>
-      <div class="grid cols-3" style="margin-top:10px">
-        <div class="card"><div>Level 1</div><h3 style="margin:.25rem 0 0">Community Supporter</h3><p class="muted">$0–$99</p><p class="muted">Name listed under Special Thanks.</p></div>
-        <div class="card"><div>Level 2</div><h3 style="margin:.25rem 0 0">Film Contributor</h3><p class="muted">$100–$499</p><p class="muted">Special Thanks + digital thank-you.</p></div>
-        <div class="card"><div>Level 3</div><h3 style="margin:.25rem 0 0">Production Patron</h3><p class="muted">$500–$999</p><p class="muted">Upper-section Thanks + BTS photo.</p></div>
-        <div class="card"><div>Level 4</div><h3 style="margin:.25rem 0 0">Executive Friend</h3><p class="muted">$1,000–$1,999</p><p class="muted">Highlighted credit + post-screening meet.</p></div>
-        <div class="card"><div>Level 5</div><h3 style="margin:.25rem 0 0">Institutional Ally</h3><p class="muted">$2,000+</p><p class="muted">Listed in Special Thanks & report.</p></div>
+      <div class="donorBadges">
+        <div class="badge">
+          <div class="bTop"><div class="bName">Anonymous</div><div class="bAmt">$2,000</div></div>
+          <div class="bSub">Institutional Ally tier</div>
+        </div>
+        <div class="badge">
+          <div class="bTop"><div class="bName">Anonymous</div><div class="bAmt">$1,000</div></div>
+          <div class="bSub">Executive Friend tier</div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:14px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap">
+          <div class="k">Top donors</div>
+          <div class="muted">Most recent first</div>
+        </div>
+
+        <table class="clean" style="margin-top:10px">
+          <thead>
+            <tr><th>Name</th><th>Amount</th><th>Date</th></tr>
+          </thead>
+          <tbody id="donorTable">
+            <tr><td>Anonymous</td><td>$2,000</td><td>Mar 2026</td></tr>
+            <tr><td>Anonymous</td><td>$1,000</td><td>Mar 2026</td></tr>
+          </tbody>
+        </table>
       </div>
     </section>
 
-    <!-- Adopt a Scene -->
-    <section class="section">
-      <h2>Adopt a Scene</h2>
-      <div class="grid cols-2" style="margin-top:10px">
-        <div class="card"><div>Scene Supporter</div><h3 style="margin:.25rem 0 0">$100–$299</h3><p class="muted">Simple dialogue/day scene — “Scene Supported by [Name]”.</p></div>
-        <div class="card"><div>Scene Builder</div><h3 style="margin:.25rem 0 0">$300–$699</h3><p class="muted">Group or lighting-intensive — “Scene Builder – [Name]”.</p></div>
-        <div class="card"><div>Scene Patron</div><h3 style="margin:.25rem 0 0">$700–$999</h3><p class="muted">Action/VFX heavy — “Scene Patron – [Name]”.</p></div>
-        <div class="card"><div>Sequence Ally</div><h3 style="margin:.25rem 0 0">$1,000+</h3><p class="muted">Major sequence/multi-day — “Sequence Supported by [Name/Org]”.</p></div>
+    <!-- TIERS -->
+    <section class="section" id="tiers">
+      <div class="k">Ways to give</div>
+      <h2 style="margin-top:6px">Donation Tiers</h2>
+
+      <div class="grid cols-3" style="margin-top:12px">
+        <div class="tierCard">
+          <div class="tierTop">
+            <div class="tierName">Community Supporter</div>
+            <div class="tierAmt">$0–$99</div>
+          </div>
+          <div class="muted" style="margin-top:8px">Listed under Special Thanks, unless you choose to stay anonymous.</div>
+          <div class="tierTag">Special Thanks</div>
+        </div>
+
+        <div class="tierCard featured">
+          <div class="tierTop">
+            <div class="tierName">Film Contributor</div>
+            <div class="tierAmt">$100–$499</div>
+          </div>
+          <div class="muted" style="margin-top:8px">Special Thanks plus a digital thank-you from the production.</div>
+          <div class="tierTag">Most Popular</div>
+        </div>
+
+        <div class="tierCard">
+          <div class="tierTop">
+            <div class="tierName">Production Patron</div>
+            <div class="tierAmt">$500–$999</div>
+          </div>
+          <div class="muted" style="margin-top:8px">Upper-section thanks plus a BTS still from set.</div>
+          <div class="tierTag">Highlighted</div>
+        </div>
+
+        <div class="tierCard">
+          <div class="tierTop">
+            <div class="tierName">Executive Friend</div>
+            <div class="tierAmt">$1,000–$1,999</div>
+          </div>
+          <div class="muted" style="margin-top:8px">Prominent thanks and an invite to a post-screening meet.</div>
+          <div class="tierTag">Premium</div>
+        </div>
+
+        <div class="tierCard">
+          <div class="tierTop">
+            <div class="tierName">Institutional Ally</div>
+            <div class="tierAmt">$2,000+</div>
+          </div>
+          <div class="muted" style="margin-top:8px">Prominent thanks and a short production update report upon request.</div>
+          <div class="tierTag">Major Gift</div>
+        </div>
+
+        <div class="tierCard">
+          <div class="tierTop">
+            <div class="tierName">Anonymous</div>
+            <div class="tierAmt">Any amount</div>
+          </div>
+          <div class="muted" style="margin-top:8px">You can donate without public recognition.</div>
+          <div class="tierTag">Privacy</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADOPT A SCENE -->
+    <section class="section" id="adopt">
+      <div class="k">Targeted support</div>
+      <h2 style="margin-top:6px">Adopt a Scene</h2>
+      <p class="muted" style="margin:8px 0 0">
+        Prefer funding something specific? Adopt a scene or sequence and we’ll recognize your support (or keep it anonymous).
+      </p>
+
+      <div class="grid cols-3" style="margin-top:12px">
+        <div class="tierCard">
+          <div class="tierTop"><div class="tierName">Scene Supporter</div><div class="tierAmt">$100–$299</div></div>
+          <div class="muted" style="margin-top:8px">Dialogue or day scene. “Scene Supported by [Name]”.</div>
+        </div>
+        <div class="tierCard">
+          <div class="tierTop"><div class="tierName">Scene Builder</div><div class="tierAmt">$300–$699</div></div>
+          <div class="muted" style="margin-top:8px">Lighting-intensive or group scene. “Scene Builder – [Name]”.</div>
+        </div>
+        <div class="tierCard">
+          <div class="tierTop"><div class="tierName">Scene Patron</div><div class="tierAmt">$700–$999</div></div>
+          <div class="muted" style="margin-top:8px">Action or VFX-heavy scene. “Scene Patron – [Name]”.</div>
+        </div>
+        <div class="tierCard featured">
+          <div class="tierTop"><div class="tierName">Sequence Ally</div><div class="tierAmt">$1,000+</div></div>
+          <div class="muted" style="margin-top:8px">Major multi-day sequence. “Sequence Supported by [Name/Org]”.</div>
+          <div class="tierTag">Big Impact</div>
+        </div>
+        <div class="tierCard">
+          <div class="tierTop"><div class="tierName">In-Kind Support</div><div class="tierAmt">Varies</div></div>
+          <div class="muted" style="margin-top:8px">Equipment, materials, locations, services. Email us to coordinate.</div>
+        </div>
+        <div class="tierCard">
+          <div class="tierTop"><div class="tierName">Share the Link</div><div class="tierAmt">Free</div></div>
+          <div class="muted" style="margin-top:8px">Sharing helps more than you think. Copy the link above and post it.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="k">Info</div>
+      <h2 style="margin-top:6px">FAQ</h2>
+
+      <div class="grid" style="margin-top:12px">
+        <details class="faq" open>
+          <summary>Is this an official Star Wars production?</summary>
+          <p class="muted">No. This is a non-commercial student project and is not affiliated with Lucasfilm or Disney.</p>
+        </details>
+        <details class="faq">
+          <summary>How are donations used?</summary>
+          <p class="muted">Donations support production costs only: wardrobe, props, locations/logistics, stunts safety, and post-production (color and sound).</p>
+        </details>
+        <details class="faq">
+          <summary>Can I donate anonymously?</summary>
+          <p class="muted">Yes. If you prefer, we can list you as “Anonymous” or not list your name at all.</p>
+        </details>
+        <details class="faq">
+          <summary>Who do I contact for larger gifts or in-kind support?</summary>
+          <p class="muted">Email <a href="mailto:Starwarsatucsd@gmail.com"><b>Starwarsatucsd@gmail.com</b></a> and we’ll coordinate.</p>
+        </details>
       </div>
     </section>
 
   </main>
 
-  <footer class="container">© Star Wars Club at UC San Diego • Non-commercial student project • Not affiliated with Lucasfilm/Disney</footer>
+  <footer class="container">
+    © Star Wars Club at UC San Diego • Non-commercial student project • Not affiliated with Lucasfilm/Disney
+  </footer>
 
   <script>
     // ====== EDIT THESE VALUES ONLY ======
-    const PAYPAL_ME_LINK = 'https://gofund.me/e02d2bd90'; // placeholder; replace later
+    const PAYPAL_ME_LINK = 'https://gofund.me/e02d2bd90'; // replace if needed
     const GOAL_DOLLARS   = 10000;
-    const RAISED_DOLLARS = 0;
+    const RAISED_DOLLARS = 3000; // $3,000 so far (two anonymous donors)
     // ====================================
 
     // Gate
@@ -168,9 +612,10 @@
       }
     })();
 
-    // Donate & copy
+    // Donate link + copy
     const donateA = document.getElementById('paypalMe');
     donateA.href = PAYPAL_ME_LINK;
+
     document.getElementById('copyPayPal').addEventListener('click', async () => {
       try{
         await navigator.clipboard.writeText(PAYPAL_ME_LINK);
@@ -185,22 +630,38 @@
     // Progress
     const pct = Math.max(0, Math.min(100, Math.round((RAISED_DOLLARS / GOAL_DOLLARS) * 100)));
     document.getElementById('progressFill').style.width = pct + '%';
-    document.getElementById('raisedLabel').textContent = `$${RAISED_DOLLARS.toLocaleString()} (${pct}%)`;
 
-    // Theme-aware icons
+    // Labels
+    const goalText = `$${GOAL_DOLLARS.toLocaleString()}`;
+    const raisedText = `$${RAISED_DOLLARS.toLocaleString()}`;
+
+    const goalChip = document.getElementById('goalChip');
+    const raisedChip = document.getElementById('raisedChip');
+    const pctChip = document.getElementById('pctChip');
+    const raisedBig = document.getElementById('raisedBig');
+
+    if (goalChip) goalChip.textContent = `Goal: ${goalText}`;
+    if (raisedChip) raisedChip.textContent = `${raisedText} raised`;
+    if (pctChip) pctChip.textContent = `${pct}% funded`;
+    if (raisedBig) raisedBig.textContent = raisedText;
+
+    const goalT = document.getElementById('goalText');
+    if (goalT) goalT.textContent = goalText;
+
+    // Theme-aware payment icons
     const ICONS = [
-      { key:'paypal',    dark:'https://cdn.simpleicons.org/paypal/ffffff',    light:'https://cdn.simpleicons.org/paypal/000000' },
-      { key:'applepay',  dark:'https://cdn.simpleicons.org/applepay/ffffff',  light:'https://cdn.simpleicons.org/applepay/000000' },
-      { key:'googlepay', dark:'https://cdn.simpleicons.org/googlepay/ffffff', light:'https://cdn.simpleicons.org/googlepay/000000' },
-      { key:'visa',      dark:'https://cdn.simpleicons.org/visa/ffffff',      light:'https://cdn.simpleicons.org/visa/000000' },
-      { key:'mastercard',dark:'https://cdn.simpleicons.org/mastercard/ffffff',light:'https://cdn.simpleicons.org/mastercard/000000' }
+      { key:'paypal',     dark:'https://cdn.simpleicons.org/paypal/ffffff',      light:'https://cdn.simpleicons.org/paypal/000000' },
+      { key:'applepay',   dark:'https://cdn.simpleicons.org/applepay/ffffff',    light:'https://cdn.simpleicons.org/applepay/000000' },
+      { key:'googlepay',  dark:'https://cdn.simpleicons.org/googlepay/ffffff',   light:'https://cdn.simpleicons.org/googlepay/000000' },
+      { key:'visa',       dark:'https://cdn.simpleicons.org/visa/ffffff',        light:'https://cdn.simpleicons.org/visa/000000' },
+      { key:'mastercard', dark:'https://cdn.simpleicons.org/mastercard/ffffff',  light:'https://cdn.simpleicons.org/mastercard/000000' }
     ];
     const iconsWrap = document.getElementById('brandIcons');
 
     function renderIcons(theme){
       if (!iconsWrap) return;
-      iconsWrap.innerHTML = '';
       const isLight = theme === 'light';
+      iconsWrap.innerHTML = '';
       ICONS.forEach(icon => {
         const img = document.createElement('img');
         img.className = 'icon';
@@ -210,7 +671,7 @@
       });
     }
 
-    // Theme toggle (match other pages)
+    // Theme toggle
     (function(){
       const KEY = 'theme';
       const ICON_LIGHT = 'assets/img/light.svg';
