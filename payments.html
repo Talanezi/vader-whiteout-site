@@ -9,6 +9,94 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Crimson+Text:wght@700&family=Fraunces:opsz,wght@9..144,700;9..144,800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
 
   <style>
+
+/* ===========================
+   WORLD BETWEEN WORLDS SKIN
+   Drop-in background + glass
+   =========================== */
+
+/* Make surfaces more “ethereal glass” */
+header.topnav,
+section.section,
+.card,
+.tierCard,
+details.faq{
+  background: rgba(6, 18, 32, .28);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-color: rgba(94,231,255,.14);
+  box-shadow: 0 18px 70px rgba(0,0,0,.35);
+}
+html[data-theme="light"] header.topnav,
+html[data-theme="light"] section.section,
+html[data-theme="light"] .card,
+html[data-theme="light"] .tierCard,
+html[data-theme="light"] details.faq{
+  background: rgba(245, 248, 255, .62);
+  border-color: rgba(0, 130, 170, .18);
+  box-shadow: 0 18px 70px rgba(0,0,0,.12);
+}
+
+/* Make the page background handled by canvas */
+html, body{
+  background: transparent !important;
+}
+
+/* Slightly cooler typography + accents */
+:root{
+  --accent:#5ee7ff;
+  --accent2:#9b8cff; /* subtle mystical violet */
+  --line: rgba(94,231,255,.14);
+}
+html[data-theme="light"]{
+  --accent:#0ea5e9;
+  --accent2:#7c3aed;
+}
+
+/* Progress bar glow */
+.bar > span{
+  filter: drop-shadow(0 0 10px rgba(94,231,255,.35));
+}
+
+/* Donate button: “luminous slab” */
+.paybtn.btn-primary{
+  position:relative;
+  overflow:hidden;
+}
+.paybtn.btn-primary::before{
+  content:"";
+  position:absolute; inset:-2px;
+  background:
+    radial-gradient(900px 240px at 18% 0%, rgba(94,231,255,.26), transparent 60%),
+    radial-gradient(700px 220px at 110% 40%, rgba(155,140,255,.18), transparent 60%);
+  opacity:.95;
+  pointer-events:none;
+}
+.paybtn.btn-primary > *{ position:relative; z-index:1; }
+
+/* Add a “cosmic hairline” shimmer to borders on hover */
+.card:hover, .tierCard:hover, section.section:hover{
+  box-shadow: 0 22px 80px rgba(0,0,0,.45);
+  border-color: rgba(94,231,255,.22);
+}
+
+/* Canvas behind everything */
+#wbwCanvas{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
+  pointer-events:none;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  #wbwCanvas{ display:none; }
+  html, body{
+    background: linear-gradient(180deg, #05080f, #070b12) !important;
+  }
+}    
     :root{
       --ink:#f4f4f4;
       --mute:#a7a7a7;
@@ -329,6 +417,7 @@
 </head>
 
 <body>
+  <canvas id="wbwCanvas" aria-hidden="true"></canvas>
   <header class="topnav container">
     <div class="brand">Vader: Whiteout</div>
     <nav class="navlinks">
