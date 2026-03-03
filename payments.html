@@ -10,46 +10,47 @@
 
   <style>
     :root{
-      /* Core */
-      --ink:#f4f7fb;
-      --mute:rgba(244,247,251,.72);
-      --line:rgba(94,231,255,.14);
+      /* Monochrome-first with subtle blue hints */
+      --ink:#f4f4f4;
+      --mute:rgba(244,244,244,.68);
 
-      /* Fallback background (canvas paints the real look) */
-      --bg0:#05070d;
-      --bg1:#07101d;
+      /* Borders are “almost gray” but slightly blue */
+      --line:rgba(120,200,255,.14);
+
+      /* Near-black with faint blue bias */
+      --bg0:#05060a;
+      --bg1:#070a10;
 
       --radius:20px;
       --page-max:1200px;
       --page-gutter:24px;
 
-      /* Glass */
-      --card: rgba(6,18,32,.34);
-      --card2: rgba(6,18,32,.44);
+      /* DARKER glass boxes */
+      --card:rgba(0,0,0,.44);
+      --card2:rgba(0,0,0,.54);
 
-      /* WBW accents */
-      --accent:#5ee7ff;
-      --accent2:#9b8cff;
+      /* ONLY blue accents */
+      --accent:#78d7ff;
+      --accent2:#2fa8ff;
 
-      /* Shadow */
-      --shadow: 0 18px 70px rgba(0,0,0,.35);
+      --shadow:0 18px 70px rgba(0,0,0,.42);
     }
 
     html[data-theme="light"]{
-      --ink:#0b1220;
-      --mute:rgba(11,18,32,.62);
-      --line:rgba(0,120,170,.18);
+      --ink:#0b0b0b;
+      --mute:rgba(11,11,11,.62);
+      --line:rgba(0,110,160,.18);
 
-      --bg0:#f6f9ff;
-      --bg1:#edf3fb;
+      --bg0:#fbfbfb;
+      --bg1:#f0f3f6;
 
-      --card: rgba(255,255,255,.70);
-      --card2: rgba(255,255,255,.82);
+      --card:rgba(255,255,255,.72);
+      --card2:rgba(255,255,255,.86);
 
       --accent:#0ea5e9;
-      --accent2:#7c3aed;
+      --accent2:#2563eb;
 
-      --shadow: 0 18px 70px rgba(0,0,0,.12);
+      --shadow:0 18px 70px rgba(0,0,0,.12);
     }
 
     *{box-sizing:border-box}
@@ -57,14 +58,14 @@
     body{
       margin:0;
       color:var(--ink);
-      background: linear-gradient(180deg, var(--bg0), var(--bg1));
+      background:linear-gradient(180deg,var(--bg0),var(--bg1));
       font:16px/1.6 'Inter',system-ui,sans-serif;
       min-height:100vh;
       overflow-x:hidden;
     }
     a{color:inherit;text-decoration:none}
 
-    /* WBW canvas behind everything */
+    /* Canvas behind everything */
     #wbwCanvas{
       position:fixed;
       inset:0;
@@ -73,25 +74,23 @@
       z-index:-2;
       pointer-events:none;
     }
-    /* Subtle vignette + glow overlay above canvas */
+
+    /* Subtle vignette above canvas (still monochrome) */
     body::before{
       content:"";
       position:fixed; inset:0;
       z-index:-1;
       pointer-events:none;
       background:
-        radial-gradient(1200px 520px at 20% -10%, rgba(94,231,255,.12), transparent 60%),
-        radial-gradient(1100px 520px at 110% 10%, rgba(155,140,255,.10), transparent 62%),
-        radial-gradient(900px 520px at 50% 120%, rgba(255,255,255,.06), transparent 70%),
-        radial-gradient(1200px 900px at 50% 50%, rgba(0,0,0,.22), transparent 60%),
-        radial-gradient(1200px 900px at 50% 120%, rgba(0,0,0,.38), transparent 55%);
-      opacity:1;
+        radial-gradient(1200px 520px at 18% -10%, rgba(120,200,255,.10), transparent 60%),
+        radial-gradient(1200px 520px at 110% 15%, rgba(120,200,255,.07), transparent 62%),
+        radial-gradient(1000px 700px at 50% 120%, rgba(0,0,0,.45), transparent 60%);
     }
     html[data-theme="light"] body::before{
       background:
-        radial-gradient(1200px 520px at 20% -10%, rgba(14,165,233,.10), transparent 60%),
-        radial-gradient(1100px 520px at 110% 10%, rgba(124,58,237,.08), transparent 62%),
-        radial-gradient(900px 520px at 50% 120%, rgba(0,0,0,.04), transparent 70%);
+        radial-gradient(1200px 520px at 18% -10%, rgba(14,165,233,.07), transparent 60%),
+        radial-gradient(1200px 520px at 110% 15%, rgba(37,99,235,.05), transparent 62%),
+        radial-gradient(1000px 700px at 50% 120%, rgba(0,0,0,.06), transparent 60%);
     }
 
     .container{
@@ -101,18 +100,17 @@
 
     /* ===== Topnav ===== */
     header.topnav{
-      position:sticky; top:0; z-index:10;
-      padding:10px 16px;
-      border-radius:14px;
+      position:sticky;top:0;z-index:10;
+      padding:10px 16px;border-radius:14px;
       border:1px solid var(--line);
-      background: rgba(6,18,32,.22);
-      backdrop-filter: blur(14px) saturate(140%);
-      -webkit-backdrop-filter: blur(14px) saturate(140%);
-      box-shadow: var(--shadow);
-      display:flex; gap:12px; align-items:center;
+      background:rgba(0,0,0,.30);
+      backdrop-filter:blur(16px) saturate(140%);
+      -webkit-backdrop-filter:blur(16px) saturate(140%);
+      box-shadow:var(--shadow);
+      display:flex;gap:12px;align-items:center;
     }
     html[data-theme="light"] header.topnav{
-      background: rgba(255,255,255,.62);
+      background:rgba(255,255,255,.70);
     }
 
     .brand{
@@ -126,44 +124,53 @@
 
     .navlinks{
       margin:0 auto;
-      display:flex; gap:10px; flex-wrap:wrap;
-      justify-content:center;
-      width:100%;
+      display:flex;gap:10px;flex-wrap:wrap;
+      justify-content:center;width:100%;
     }
 
     .btn{
       padding:10px 12px;
       border:1px solid var(--line);
       border-radius:12px;
-      background: rgba(255,255,255,.03);
+      background:rgba(255,255,255,.03);
       font-weight:800;
       transition:.25s;
       color:var(--ink);
       cursor:pointer;
     }
-    html[data-theme="light"] .btn{ background: rgba(0,0,0,.04); }
+    html[data-theme="light"] .btn{background:rgba(0,0,0,.04)}
     .btn:hover{
-      transform: translateY(-2px);
-      background: rgba(255,255,255,.06);
-      box-shadow: var(--shadow);
+      transform:translateY(-2px);
+      background:rgba(255,255,255,.06);
+      box-shadow:var(--shadow);
     }
-    html[data-theme="light"] .btn:hover{ background: rgba(0,0,0,.08); }
+    html[data-theme="light"] .btn:hover{background:rgba(0,0,0,.08)}
 
     #themeToggle{display:inline-flex;align-items:center;justify-content:center;padding:10px}
     #themeToggle img{width:20px;height:20px;display:block}
 
-    /* ===== Page blocks ===== */
+    /* ===== Sections / cards ===== */
     section.section{
       border:1px solid var(--line);
       border-radius:var(--radius);
       padding:clamp(16px,2.5vw,28px);
-      background: var(--card);
-      backdrop-filter: blur(16px) saturate(145%);
-      -webkit-backdrop-filter: blur(16px) saturate(145%);
-      box-shadow: var(--shadow);
+      background:var(--card);
+      backdrop-filter:blur(18px) saturate(140%);
+      -webkit-backdrop-filter:blur(18px) saturate(140%);
+      box-shadow:var(--shadow);
       margin:16px auto;
       position:relative;
       overflow:hidden;
+    }
+
+    .card{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:14px;
+      background:var(--card2);
+      backdrop-filter:blur(18px) saturate(140%);
+      -webkit-backdrop-filter:blur(18px) saturate(140%);
+      box-shadow:0 14px 55px rgba(0,0,0,.28);
     }
 
     .k{
@@ -184,7 +191,6 @@
     h1{font-size:clamp(1.9rem,3.2vw,2.4rem);line-height:1.1}
     h2{font-size:clamp(1.4rem,2.1vw,1.7rem);line-height:1.15}
     h3{font-size:1.02rem;line-height:1.15}
-
     .muted{color:var(--mute);font-size:.95rem}
 
     .grid{display:grid;gap:14px}
@@ -193,42 +199,32 @@
       .grid.cols-3{grid-template-columns:repeat(3,1fr)}
     }
 
-    .card{
-      border:1px solid var(--line);
-      background: var(--card2);
-      border-radius:16px;
-      padding:14px;
-      backdrop-filter: blur(16px) saturate(145%);
-      -webkit-backdrop-filter: blur(16px) saturate(145%);
-      box-shadow: 0 14px 50px rgba(0,0,0,.22);
-    }
-
-    /* ===== Premium hero glow ===== */
+    /* Hero glow: keep monochrome + blue only */
     .heroGlow::before{
       content:"";
-      position:absolute; inset:-2px;
+      position:absolute;inset:-2px;
       background:
-        radial-gradient(1200px 520px at 12% -10%, rgba(94,231,255,.16), transparent 60%),
-        radial-gradient(1100px 520px at 112% 10%, rgba(155,140,255,.12), transparent 62%),
-        radial-gradient(900px 520px at 50% 120%, rgba(255,255,255,.08), transparent 70%);
+        radial-gradient(1200px 520px at 12% -10%, rgba(120,200,255,.12), transparent 60%),
+        radial-gradient(1100px 520px at 112% 10%, rgba(120,200,255,.08), transparent 62%),
+        radial-gradient(900px 520px at 50% 120%, rgba(255,255,255,.05), transparent 70%);
       pointer-events:none;
     }
     html[data-theme="light"] .heroGlow::before{
       background:
-        radial-gradient(1200px 520px at 12% -10%, rgba(14,165,233,.12), transparent 60%),
-        radial-gradient(1100px 520px at 112% 10%, rgba(124,58,237,.08), transparent 62%),
+        radial-gradient(1200px 520px at 12% -10%, rgba(14,165,233,.08), transparent 60%),
+        radial-gradient(1100px 520px at 112% 10%, rgba(37,99,235,.06), transparent 62%),
         radial-gradient(900px 520px at 50% 120%, rgba(0,0,0,.04), transparent 70%);
     }
 
-    /* ===== Progress ===== */
+    /* Progress */
     .chip{
       display:inline-flex;align-items:center;gap:8px;
       border:1px solid var(--line);
       padding:7px 11px;border-radius:999px;
       font-weight:900;
-      background: rgba(255,255,255,.03);
+      background:rgba(255,255,255,.03);
     }
-    html[data-theme="light"] .chip{background: rgba(0,0,0,.03);}
+    html[data-theme="light"] .chip{background:rgba(0,0,0,.03)}
 
     .statsRow{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
     .bigAmt{
@@ -236,29 +232,27 @@
       font-weight:950;
       letter-spacing:.01em;
     }
-
     .bar{
       height:14px;border-radius:999px;
-      background: rgba(255,255,255,.08);
+      background:rgba(255,255,255,.08);
       overflow:hidden;border:1px solid var(--line);
     }
-    html[data-theme="light"] .bar{background: rgba(0,0,0,.08);}
-
+    html[data-theme="light"] .bar{background:rgba(0,0,0,.08)}
     .bar > span{
       display:block;height:100%;
       width:0%;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      filter: drop-shadow(0 0 12px rgba(94,231,255,.28));
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      filter:drop-shadow(0 0 10px rgba(120,200,255,.22));
     }
 
-    /* ===== Donate panel ===== */
+    /* Donate panel */
     .payrow{display:grid;gap:12px;grid-template-columns:1fr auto}
     @media (max-width:860px){ .payrow{grid-template-columns:1fr} }
 
     .paybtn{
       display:flex;gap:10px;align-items:center;justify-content:center;
       padding:16px 18px;border-radius:14px;border:1px solid var(--line);
-      background: rgba(255,255,255,.05);
+      background:rgba(255,255,255,.05);
       font-weight:950;
       transition:.25s;
       position:relative;
@@ -266,39 +260,32 @@
     }
     .paybtn:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
 
-    /* unmistakably premium “luminous slab” */
+    /* IMPORTANT: NO always-moving shimmer (this was the “fast line”). Only subtle glow. */
     .paybtn.btn-primary{
-      background: rgba(255,255,255,.92);
-      color:#0b1220;
-      border-color: rgba(255,255,255,.95);
-      box-shadow: 0 18px 55px rgba(255,255,255,.14);
+      background:#ffffff;
+      color:#0b0b0b;
+      border-color:#ffffff;
+      box-shadow:0 18px 55px rgba(255,255,255,.14);
     }
     html[data-theme="light"] .paybtn.btn-primary{
-      background:#0b1220;
+      background:#111111;
       color:#ffffff;
-      border-color:#0b1220;
-      box-shadow: 0 18px 55px rgba(0,0,0,.14);
+      border-color:#111111;
+      box-shadow:0 18px 55px rgba(0,0,0,.14);
     }
-
-    /* moving shimmer */
-    .paybtn.btn-primary::after{
+    .paybtn.btn-primary::before{
       content:"";
-      position:absolute;
-      inset:-40%;
-      background: linear-gradient(90deg, transparent 45%, rgba(94,231,255,.22), transparent 55%);
-      transform: translateX(-40%) rotate(8deg);
-      animation: shimmer 2.6s linear infinite;
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(800px 220px at 18% 0%, rgba(120,200,255,.18), transparent 62%),
+        radial-gradient(700px 220px at 110% 50%, rgba(120,200,255,.10), transparent 62%);
+      opacity:.75;
       pointer-events:none;
-      mix-blend-mode: screen;
+      mix-blend-mode:screen;
     }
-    html[data-theme="light"] .paybtn.btn-primary::after{
-      background: linear-gradient(90deg, transparent 45%, rgba(14,165,233,.22), transparent 55%);
-      mix-blend-mode: normal;
-      opacity:.7;
-    }
-    @keyframes shimmer{
-      0%{ transform: translateX(-50%) rotate(8deg); }
-      100%{ transform: translateX(50%) rotate(8deg); }
+    html[data-theme="light"] .paybtn.btn-primary::before{
+      opacity:.22;
+      mix-blend-mode:normal;
     }
 
     .icons{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
@@ -311,12 +298,12 @@
     .trustPill{
       display:inline-flex;align-items:center;gap:8px;
       padding:7px 10px;border:1px solid var(--line);border-radius:999px;
-      background: rgba(255,255,255,.03);
+      background:rgba(255,255,255,.03);
       font-weight:800;
     }
-    html[data-theme="light"] .trustPill{background: rgba(0,0,0,.03);}
+    html[data-theme="light"] .trustPill{background:rgba(0,0,0,.03)}
 
-    /* ===== Donor wall ===== */
+    /* Donors */
     table.clean{width:100%;border-collapse:collapse}
     table.clean th, table.clean td{padding:10px;border-bottom:1px solid var(--line);text-align:left}
     table.clean th{
@@ -334,92 +321,89 @@
       border:1px solid var(--line);
       border-radius:16px;
       padding:12px;
-      background: rgba(255,255,255,.03);
+      background:rgba(255,255,255,.03);
       transition:.2s;
-      backdrop-filter: blur(14px) saturate(140%);
-      -webkit-backdrop-filter: blur(14px) saturate(140%);
+      backdrop-filter:blur(16px) saturate(140%);
+      -webkit-backdrop-filter:blur(16px) saturate(140%);
     }
-    html[data-theme="light"] .badge{background: rgba(0,0,0,.03);}
+    html[data-theme="light"] .badge{background:rgba(0,0,0,.03)}
     .badge:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
     .badge .bTop{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
     .badge .bName{font-weight:950}
     .badge .bAmt{font-weight:950}
     .badge .bSub{color:var(--mute);font-size:.9rem}
 
-    /* ===== Allocation pills ===== */
+    /* Allocation */
     .alloc{display:flex;flex-direction:column;gap:10px;margin-top:10px}
     .allocItem{
       border:1px solid var(--line);
       border-radius:14px;
       padding:10px 12px;
-      background: rgba(255,255,255,.03);
-      backdrop-filter: blur(14px) saturate(140%);
-      -webkit-backdrop-filter: blur(14px) saturate(140%);
+      background:rgba(255,255,255,.03);
+      backdrop-filter:blur(16px) saturate(140%);
+      -webkit-backdrop-filter:blur(16px) saturate(140%);
     }
-    html[data-theme="light"] .allocItem{background: rgba(0,0,0,.03);}
+    html[data-theme="light"] .allocItem{background:rgba(0,0,0,.03)}
     .allocTop{display:flex;justify-content:space-between;gap:10px;align-items:center}
-    .allocTop b{letter-spacing:.01em}
     .allocBar{
       height:10px;border-radius:999px;border:1px solid var(--line);
       overflow:hidden;margin-top:8px;
-      background: rgba(255,255,255,.06);
+      background:rgba(255,255,255,.06);
     }
-    html[data-theme="light"] .allocBar{background: rgba(0,0,0,.06);}
+    html[data-theme="light"] .allocBar{background:rgba(0,0,0,.06)}
     .allocBar span{
-      display:block;height:100%;width:0%;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      filter: drop-shadow(0 0 10px rgba(94,231,255,.22));
+      display:block;height:100%;
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      filter:drop-shadow(0 0 9px rgba(120,200,255,.20));
     }
 
-    /* ===== Tiers cards ===== */
+    /* Tiers */
     .tierCard{
       border:1px solid var(--line);
       border-radius:16px;
-      background: rgba(255,255,255,.03);
+      background:rgba(255,255,255,.03);
       padding:14px;
       position:relative;
       overflow:hidden;
       transition:.2s;
-      backdrop-filter: blur(14px) saturate(140%);
-      -webkit-backdrop-filter: blur(14px) saturate(140%);
+      backdrop-filter:blur(16px) saturate(140%);
+      -webkit-backdrop-filter:blur(16px) saturate(140%);
     }
-    html[data-theme="light"] .tierCard{background: rgba(0,0,0,.03);}
+    html[data-theme="light"] .tierCard{background:rgba(0,0,0,.03)}
     .tierCard:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
     .tierTop{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
     .tierName{font-weight:950;letter-spacing:.02em}
     .tierAmt{color:var(--mute);font-weight:900}
-
     .tierTag{
       display:inline-flex;align-items:center;gap:8px;
       padding:6px 10px;border:1px solid var(--line);border-radius:999px;
       font-weight:950;font-size:.78rem;letter-spacing:.10em;text-transform:uppercase;
-      background: rgba(255,255,255,.03);
+      background:rgba(255,255,255,.03);
       margin-top:10px;
     }
-    html[data-theme="light"] .tierTag{background: rgba(0,0,0,.03);}
-
+    html[data-theme="light"] .tierTag{background:rgba(0,0,0,.03)}
     .tierCard.featured{
-      border-color: rgba(94,231,255,.28);
+      border-color:rgba(120,200,255,.26);
     }
     .tierCard.featured::before{
       content:"";
       position:absolute; inset:-2px;
       background:
-        radial-gradient(900px 320px at 15% -10%, rgba(94,231,255,.18), transparent 60%),
-        radial-gradient(700px 260px at 110% 10%, rgba(155,140,255,.12), transparent 62%);
+        radial-gradient(900px 320px at 15% -10%, rgba(120,200,255,.12), transparent 60%),
+        radial-gradient(700px 260px at 110% 10%, rgba(120,200,255,.07), transparent 62%);
       pointer-events:none;
     }
 
-    /* ===== FAQ ===== */
+    /* FAQ */
     details.faq{
       border:1px solid var(--line);
       border-radius:16px;
-      background: rgba(255,255,255,.03);
+      background:rgba(255,255,255,.03);
       padding:12px 14px;
-      backdrop-filter: blur(14px) saturate(140%);
-      -webkit-backdrop-filter: blur(14px) saturate(140%);
+      backdrop-filter:blur(16px) saturate(140%);
+      -webkit-backdrop-filter:blur(16px) saturate(140%);
     }
-    html[data-theme="light"] details.faq{background: rgba(0,0,0,.03);}
+    html[data-theme="light"] details.faq{background:rgba(0,0,0,.03)}
     details.faq summary{
       cursor:pointer;
       font-weight:950;
@@ -436,11 +420,8 @@
       color:var(--mute);
     }
 
-    /* Reduced motion: stop canvas, keep fallback */
     @media (prefers-reduced-motion: reduce){
       #wbwCanvas{ display:none; }
-      body{ background: linear-gradient(180deg, var(--bg0), var(--bg1)); }
-      .paybtn.btn-primary::after{ display:none; }
     }
   </style>
 </head>
@@ -462,7 +443,6 @@
 
   <main class="container">
 
-    <!-- HERO / FUNDRAISER -->
     <section class="section heroGlow" id="top">
       <div class="k">Fundraiser</div>
       <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;margin-top:6px">
@@ -480,7 +460,6 @@
       </div>
 
       <div class="grid cols-2" style="margin-top:14px">
-        <!-- Left: Donate + Progress -->
         <div class="card">
           <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
             <div class="icons" id="brandIcons"></div>
@@ -511,7 +490,6 @@
           </div>
         </div>
 
-        <!-- Right: Where funds go -->
         <div class="card">
           <div class="k">Transparency</div>
           <h2 style="margin-top:6px">Where funds go</h2>
@@ -545,7 +523,6 @@
       </div>
     </section>
 
-    <!-- DONORS -->
     <section class="section" id="donors">
       <div class="k">Recognition</div>
       <h2 style="margin-top:6px">Donors</h2>
@@ -582,7 +559,6 @@
       </div>
     </section>
 
-    <!-- TIERS -->
     <section class="section" id="tiers">
       <div class="k">Ways to give</div>
       <h2 style="margin-top:6px">Donation Tiers</h2>
@@ -644,7 +620,6 @@
       </div>
     </section>
 
-    <!-- ADOPT A SCENE -->
     <section class="section" id="adopt">
       <div class="k">Targeted support</div>
       <h2 style="margin-top:6px">Adopt a Scene</h2>
@@ -681,7 +656,6 @@
       </div>
     </section>
 
-    <!-- FAQ -->
     <section class="section" id="faq">
       <div class="k">Info</div>
       <h2 style="margin-top:6px">FAQ</h2>
@@ -716,7 +690,7 @@
     // ====== EDIT THESE VALUES ONLY ======
     const PAYPAL_ME_LINK = 'https://gofund.me/e02d2bd90';
     const GOAL_DOLLARS   = 10000;
-    const RAISED_DOLLARS = 3000; // two anonymous donors
+    const RAISED_DOLLARS = 3000;
     // ====================================
 
     // Gate
@@ -738,15 +712,11 @@
     const copyBtn = document.getElementById('copyPayPal');
     if (copyBtn){
       copyBtn.addEventListener('click', async () => {
+        const m = document.getElementById('copyMsg');
         try{
           await navigator.clipboard.writeText(PAYPAL_ME_LINK);
-          const m = document.getElementById('copyMsg');
-          if (m){
-            m.textContent = 'Link copied';
-            setTimeout(()=>m.textContent='', 1500);
-          }
+          if (m){ m.textContent = 'Link copied'; setTimeout(()=>m.textContent='', 1500); }
         }catch(e){
-          const m = document.getElementById('copyMsg');
           if (m) m.textContent = 'Copy failed';
         }
       });
@@ -773,16 +743,15 @@
     if (raisedBig) raisedBig.textContent = raisedText;
     if (goalT) goalT.textContent = goalText;
 
-    // Theme-aware payment icons
+    // Theme-aware payment icons (still monochrome)
     const ICONS = [
-      { key:'paypal',     dark:'https://cdn.simpleicons.org/paypal/ffffff',      light:'https://cdn.simpleicons.org/paypal/0b1220' },
-      { key:'applepay',   dark:'https://cdn.simpleicons.org/applepay/ffffff',    light:'https://cdn.simpleicons.org/applepay/0b1220' },
-      { key:'googlepay',  dark:'https://cdn.simpleicons.org/googlepay/ffffff',   light:'https://cdn.simpleicons.org/googlepay/0b1220' },
-      { key:'visa',       dark:'https://cdn.simpleicons.org/visa/ffffff',        light:'https://cdn.simpleicons.org/visa/0b1220' },
-      { key:'mastercard', dark:'https://cdn.simpleicons.org/mastercard/ffffff',  light:'https://cdn.simpleicons.org/mastercard/0b1220' }
+      { key:'paypal',     dark:'https://cdn.simpleicons.org/paypal/ffffff',      light:'https://cdn.simpleicons.org/paypal/0b0b0b' },
+      { key:'applepay',   dark:'https://cdn.simpleicons.org/applepay/ffffff',    light:'https://cdn.simpleicons.org/applepay/0b0b0b' },
+      { key:'googlepay',  dark:'https://cdn.simpleicons.org/googlepay/ffffff',   light:'https://cdn.simpleicons.org/googlepay/0b0b0b' },
+      { key:'visa',       dark:'https://cdn.simpleicons.org/visa/ffffff',        light:'https://cdn.simpleicons.org/visa/0b0b0b' },
+      { key:'mastercard', dark:'https://cdn.simpleicons.org/mastercard/ffffff',  light:'https://cdn.simpleicons.org/mastercard/0b0b0b' }
     ];
     const iconsWrap = document.getElementById('brandIcons');
-
     function renderIcons(theme){
       if (!iconsWrap) return;
       const isLight = theme === 'light';
@@ -834,7 +803,7 @@
   </script>
 
   <script>
-    // WBW CANVAS (must run AFTER canvas exists)
+    // WBW CANVAS: blue threads only, stable diagonals, no “crash” speed.
     (function(){
       const root = document.documentElement;
       const canvas = document.getElementById('wbwCanvas');
@@ -846,23 +815,32 @@
 
       const palette = {
         dark: {
-          bg0:[4,7,13], bg1:[6,16,28],
-          fog:[18,38,58], star:[235,245,255],
-          thread:[94,231,255], thread2:[155,140,255],
-          horizon:[140,230,255]
+          bg0:[4,6,10],
+          bg1:[6,9,14],
+          fog:[14,24,36],
+          star:[235,245,255],
+          thread:[120,200,255],
+          thread2:[120,200,255],   // no purple
+          horizon:[145,220,255]
         },
         light:{
-          bg0:[246,249,255], bg1:[233,241,250],
-          fog:[190,215,235], star:[14,18,26],
-          thread:[14,165,233], thread2:[124,58,237],
+          bg0:[251,251,251],
+          bg1:[240,243,246],
+          fog:[205,225,240],
+          star:[10,12,16],
+          thread:[14,165,233],
+          thread2:[14,165,233],
           horizon:[0,120,170]
         }
       };
 
       const stars=[];
-      const STAR_COUNT=440;
       const threads=[];
-      const THREAD_COUNT=12;
+      const diags=[];
+
+      const STAR_COUNT=420;
+      const THREAD_COUNT=11;
+      const DIAG_COUNT=3;
 
       function rand(a,b){ return a + Math.random()*(b-a); }
       function rgba(rgb,a){ return `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${a})`; }
@@ -883,22 +861,37 @@
           stars.push({
             x:Math.random(),
             y:Math.random(),
-            r:rand(0.25,1.35),
-            a:rand(0.10,0.62),
-            tw:rand(0.0006,0.0019),
+            r:rand(0.25,1.25),
+            a:rand(0.10,0.60),
+            tw:rand(0.0006,0.0018),
             ph:rand(0,Math.PI*2)
           });
         }
+
         threads.length=0;
         for(let i=0;i<THREAD_COUNT;i++){
           threads.push({
             seed:rand(0,1000),
             phase:rand(0,Math.PI*2),
-            speed:rand(0.00004,0.000095),
-            width:rand(0.9,2.4),
-            alpha:rand(0.07,0.16),
-            tilt:rand(-0.85,0.85),
-            offset:rand(-0.25,0.25)
+
+            /* SLOWER + tighter range: no runaway line */
+            speed:rand(0.000045,0.000070),
+
+            width:rand(0.9,2.2),
+            alpha:rand(0.06,0.14),
+            tilt:rand(-0.78,0.78),
+            offset:rand(-0.22,0.22)
+          });
+        }
+
+        /* Stable diagonals: generate once (no frame-to-frame randomness) */
+        diags.length=0;
+        for(let k=0;k<DIAG_COUNT;k++){
+          diags.push({
+            x0: rand(-0.2,0.2), y0: rand(-0.1,0.3),
+            cx1: rand(0.20,0.45), cy1: rand(0.20,0.55),
+            cx2: rand(0.55,0.80), cy2: rand(0.35,0.70),
+            x1: rand(0.8,1.2), y1: rand(0.7,1.15)
           });
         }
       }
@@ -916,14 +909,14 @@
 
         ctx.globalCompositeOperation='screen';
 
-        const fog1=ctx.createRadialGradient(W*0.28,H*0.74,0,W*0.28,H*0.74,Math.max(W,H)*0.78);
-        fog1.addColorStop(0, rgba(p.fog, theme==='light'?0.10:0.18));
+        const fog1=ctx.createRadialGradient(W*0.30,H*0.74,0,W*0.30,H*0.74,Math.max(W,H)*0.80);
+        fog1.addColorStop(0, rgba(p.fog, theme==='light'?0.07:0.14));
         fog1.addColorStop(1, rgba(p.fog, 0));
         ctx.fillStyle=fog1;
         ctx.fillRect(0,0,W,H);
 
         const fog2=ctx.createRadialGradient(W*0.76,H*0.30,0,W*0.76,H*0.30,Math.max(W,H)*0.72);
-        fog2.addColorStop(0, rgba(p.fog, theme==='light'?0.07:0.12));
+        fog2.addColorStop(0, rgba(p.fog, theme==='light'?0.05:0.10));
         fog2.addColorStop(1, rgba(p.fog, 0));
         ctx.fillStyle=fog2;
         ctx.fillRect(0,0,W,H);
@@ -937,11 +930,9 @@
         for(const s of stars){
           const tw = 0.62 + 0.38*Math.sin(t*s.tw + s.ph);
           const a = s.a * tw;
-          const x = s.x*W;
-          const y = s.y*H;
           ctx.fillStyle = rgba(p.star, a);
           ctx.beginPath();
-          ctx.arc(x,y,s.r,0,Math.PI*2);
+          ctx.arc(s.x*W, s.y*H, s.r, 0, Math.PI*2);
           ctx.fill();
         }
         ctx.restore();
@@ -949,8 +940,8 @@
 
       function threadX(th,y,t){
         const time=t*th.speed + th.phase;
-        const w1=0.40*Math.sin(time + y*2.2 + th.seed);
-        const w2=0.18*Math.sin(time*1.6 + y*5.2 + th.seed*0.3);
+        const w1=0.36*Math.sin(time + y*2.2 + th.seed);
+        const w2=0.16*Math.sin(time*1.6 + y*5.2 + th.seed*0.3);
         const base=0.5 + th.offset + th.tilt*(y-0.5);
         return base + w1 + w2;
       }
@@ -963,36 +954,33 @@
 
         for(let i=0;i<threads.length;i++){
           const th=threads[i];
-          const isAlt=(i%3===0);
-          const col=isAlt?p.thread2:p.thread;
+          const col=p.thread;
 
           ctx.strokeStyle = rgba(col, th.alpha);
           ctx.lineWidth = th.width;
-          ctx.shadowColor = rgba(col, theme==='light'?0.14:0.22);
-          ctx.shadowBlur = theme==='light'?14:18;
+
+          ctx.shadowColor = rgba(col, theme==='light'?0.10:0.18);
+          ctx.shadowBlur = theme==='light'?12:18;
 
           ctx.beginPath();
           const steps=78;
           for(let s=0;s<=steps;s++){
             const yy=s/steps;
-            const xN=threadX(th,yy,t);
-            const x=xN*W;
+            const x=threadX(th,yy,t)*W;
             const y=(yy*1.35 - 0.15)*H;
             if(s===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
           }
           ctx.stroke();
         }
 
-        // faint diagonals
-        ctx.shadowBlur = theme==='light'?10:16;
+        /* Stable diagonals (no flicker) */
+        ctx.shadowBlur = theme==='light'?10:14;
         ctx.lineWidth = 1.1;
-        ctx.strokeStyle = rgba(p.thread, theme==='light'?0.05:0.07);
-        for(let k=0;k<3;k++){
-          const y0=rand(-0.1,0.3)*H, y1=rand(0.7,1.15)*H;
-          const x0=rand(-0.2,0.2)*W, x1=rand(0.8,1.2)*W;
+        ctx.strokeStyle = rgba(p.thread, theme==='light'?0.045:0.065);
+        for(const d of diags){
           ctx.beginPath();
-          ctx.moveTo(x0,y0);
-          ctx.bezierCurveTo(W*0.35,H*0.35,W*0.65,H*0.55,x1,y1);
+          ctx.moveTo(d.x0*W, d.y0*H);
+          ctx.bezierCurveTo(d.cx1*W, d.cy1*H, d.cx2*W, d.cy2*H, d.x1*W, d.y1*H);
           ctx.stroke();
         }
 
@@ -1004,10 +992,10 @@
         ctx.globalCompositeOperation='screen';
         const y=H*0.76;
 
-        ctx.strokeStyle = rgba(p.horizon, theme==='light'?0.20:0.16);
+        ctx.strokeStyle = rgba(p.horizon, theme==='light'?0.16:0.14);
         ctx.lineWidth = 2;
-        ctx.shadowColor = rgba(p.horizon, theme==='light'?0.16:0.18);
-        ctx.shadowBlur = theme==='light'?14:18;
+        ctx.shadowColor = rgba(p.horizon, theme==='light'?0.12:0.16);
+        ctx.shadowBlur = theme==='light'?12:18;
 
         ctx.beginPath();
         ctx.moveTo(0,y);
@@ -1016,7 +1004,7 @@
 
         ctx.shadowBlur=0;
         ctx.lineWidth=1;
-        ctx.strokeStyle = rgba(p.horizon, theme==='light'?0.10:0.10);
+        ctx.strokeStyle = rgba(p.horizon, theme==='light'?0.08:0.09);
         ctx.beginPath();
         ctx.moveTo(0,y+6);
         ctx.lineTo(W,y+6);
@@ -1041,7 +1029,9 @@
       cancelAnimationFrame(raf);
       raf=requestAnimationFrame(frame);
 
-      window.addEventListener('resize', resize, {passive:true});
+      window.addEventListener('resize', () => {
+        resize();
+      }, {passive:true});
     })();
   </script>
 </body>
