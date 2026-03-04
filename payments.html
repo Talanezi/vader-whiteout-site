@@ -173,6 +173,23 @@
       box-shadow:0 14px 55px rgba(0,0,0,.28);
     }
 
+    /* Fundraiser card: full-width + nicer spacing */
+.fundraiserCard{
+  width:100%;
+  padding:clamp(16px,2.2vw,22px);
+}
+
+/* Make Copy link button match Donate button height */
+.copyBtn{
+  padding:16px 18px;
+  border-radius:14px;
+  font-weight:950;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:100%;
+}
+    
     .k{
       text-transform:uppercase;
       letter-spacing:.28em;
@@ -459,73 +476,38 @@
         </div>
       </div>
 
-      <div class="grid cols-2" style="margin-top:14px">
-        <div class="card">
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
-            <div class="icons" id="brandIcons"></div>
-            <div class="chip" id="pctChip">0% funded</div>
-          </div>
+      <div class="grid" style="margin-top:14px">
+  <div class="card fundraiserCard">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <div class="icons" id="brandIcons"></div>
+      <div class="chip" id="pctChip">0% funded</div>
+    </div>
 
-          <div class="statsRow">
-            <div class="bigAmt" id="raisedBig">$0</div>
-            <div class="muted">toward <b id="goalText">$10,000</b></div>
-          </div>
+    <div class="statsRow">
+      <div class="bigAmt" id="raisedBig">$0</div>
+      <div class="muted">toward <b id="goalText">$10,000</b></div>
+    </div>
 
-          <div class="bar" style="margin-top:10px">
-            <span id="progressFill" style="width:0%"></span>
-          </div>
+    <div class="bar" style="margin-top:10px">
+      <span id="progressFill" style="width:0%"></span>
+    </div>
 
-          <div class="payrow" style="margin-top:12px">
-            <a id="paypalMe" class="paybtn btn-primary" href="#" target="_blank" rel="noopener">
-              Donate now
-            </a>
-            <button id="copyPayPal" class="btn">Copy link</button>
-          </div>
-          <div id="copyMsg" class="muted" style="margin-top:6px"></div>
+    <div class="payrow" style="margin-top:12px">
+      <a id="paypalMe" class="paybtn btn-primary" href="#" target="_blank" rel="noopener">
+        Donate now
+      </a>
+      <button id="copyPayPal" class="btn copyBtn" type="button">Copy link</button>
+    </div>
+    <div id="copyMsg" class="muted" style="margin-top:6px"></div>
 
-          <div class="trustRow">
-            <span class="trustPill">Secure checkout via platform</span>
-            <span class="trustPill">Non-commercial student film</span>
-            <span class="trustPill">Production costs only</span>
-          </div>
-        </div>
-    </section>
-
-    <section class="section" id="donors">
-      <div class="k">Recognition</div>
-      <h2 style="margin-top:6px">Donors</h2>
-      <p class="muted" style="margin:8px 0 0">
-        Thank you to everyone backing the film. Donors may choose to remain anonymous.
-      </p>
-
-      <div class="donorBadges">
-        <div class="badge">
-          <div class="bTop"><div class="bName">Anonymous</div><div class="bAmt">$2,000</div></div>
-          <div class="bSub">Institutional Ally tier</div>
-        </div>
-        <div class="badge">
-          <div class="bTop"><div class="bName">Anonymous</div><div class="bAmt">$1,000</div></div>
-          <div class="bSub">Executive Friend tier</div>
-        </div>
-      </div>
-
-      <div class="card" style="margin-top:14px">
-        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap">
-          <div class="k">Top donors</div>
-          <div class="muted">Most recent first</div>
-        </div>
-
-        <table class="clean" style="margin-top:10px">
-          <thead>
-            <tr><th>Name</th><th>Amount</th><th>Date</th></tr>
-          </thead>
-          <tbody id="donorTable">
-            <tr><td>Anonymous</td><td>$2,000</td><td>Mar 2026</td></tr>
-            <tr><td>Anonymous</td><td>$1,000</td><td>Mar 2026</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+    <div class="trustRow">
+      <span class="trustPill">Secure checkout via platform</span>
+      <span class="trustPill">Non-commercial student film</span>
+      <span class="trustPill">Production costs only</span>
+    </div>
+  </div>
+</div>
+</section>
 
     <section class="section" id="tiers">
       <div class="k">Ways to give</div>
