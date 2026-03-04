@@ -643,17 +643,6 @@
     const RAISED_DOLLARS = 3000;
     // ====================================
 
-    // Gate
-    const TOKEN_KEY = 'vw_ok';
-    (function gate(){
-      try{
-        if (localStorage.getItem(TOKEN_KEY) !== '1') {
-          location.replace('https://talanezi.github.io/vader-whiteout-site/members/');
-        }
-      } catch(e) {
-        location.replace('https://talanezi.github.io/vader-whiteout-site/members/');
-      }
-    })();
 
     // Donate link + copy
     const donateA = document.getElementById('paypalMe');
