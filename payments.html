@@ -350,6 +350,31 @@
     }
     html[data-theme="light"] .proofCard{background:rgba(0,0,0,.03)}
 
+    .proofHero{
+      display:grid;
+      gap:14px;
+      align-items:stretch;
+    }
+    @media (min-width:900px){
+      .proofHero{grid-template-columns:1.12fr .88fr}
+    }
+
+    .videoWrap{
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      min-height:280px;
+      background:rgba(255,255,255,.03);
+      box-shadow:0 14px 55px rgba(0,0,0,.22);
+    }
+    .videoWrap iframe{
+      width:100%;
+      height:100%;
+      min-height:280px;
+      display:block;
+      border:0;
+    }
+
     .stillsGrid{
       display:grid;
       gap:12px;
@@ -454,7 +479,7 @@
       <a class="btn" href="https://talanezi.github.io/vader-whiteout-site/">Home</a>
       <a class="btn" href="https://talanezi.github.io/vader-whiteout-site/members/">Members</a>
       <a class="btn" href="#tiers">Tiers</a>
-      <a class="btn" href="#blackout">Previous Film</a>
+      <a class="btn" href="#blackout">Vader: Blackout</a>
       <button class="btn" id="themeToggle" type="button" aria-label="Toggle theme">
         <img src="assets/img/dark.png" alt="Dark mode icon">
       </button>
@@ -533,13 +558,13 @@
 
         <div class="tierCard">
           <div class="tierTop">
-            <div class="tierName">Merch Supporter</div>
-            <div class="tierAmt">$100+</div>
+            <div class="tierName">Alliance Backer</div>
+            <div class="tierAmt">$100–$499</div>
           </div>
           <div class="muted" style="margin-top:8px">
-            Includes Community Supporter recognition plus a shirt and special merch.
+            Receives special merch in recognition of your support and helps push the production forward in a meaningful way.
           </div>
-          <div class="tierTag">Merch Included</div>
+          <div class="tierTag">Special Merch</div>
         </div>
 
         <div class="tierCard featured">
@@ -548,7 +573,7 @@
             <div class="tierAmt">$500–$1,499</div>
           </div>
           <div class="muted" style="margin-top:8px">
-            Receives Special Thanks credit and enters the highlighted supporter tier for the production.
+            Receives a Special Thanks credit and enters the highlighted supporter tier for the production.
           </div>
           <div class="tierTag">Special Thanks</div>
         </div>
@@ -559,9 +584,9 @@
             <div class="tierAmt">$1,500–$2,999</div>
           </div>
           <div class="muted" style="margin-top:8px">
-            Executive Friend credit, red carpet invitation, and exclusive supporter perks.
+            Executive Friend credit, invited to the red carpet, and receives exclusive supporter perks.
           </div>
-          <div class="tierTag">Premium Access</div>
+          <div class="tierTag">Red Carpet Access</div>
         </div>
 
         <div class="tierCard featured">
@@ -570,12 +595,12 @@
             <div class="tierAmt">$3,000+</div>
           </div>
           <div class="muted" style="margin-top:8px">
-            Top-tier producer credit for major backers helping bring the film to life.
+            Top-tier producer credit for major backers helping bring the film to life at the highest level.
           </div>
           <ul class="miniList">
             <li>Only 2 credits available</li>
             <li>Premium recognition tier</li>
-            <li>Best fit for serious investors/backers</li>
+            <li>Reserved for major supporters</li>
           </ul>
           <div class="tierTag">2 Slots Only</div>
         </div>
@@ -595,29 +620,36 @@
 
     <section class="section" id="blackout">
       <div class="k">Previous production</div>
-      <h2 style="margin-top:6px">From Our Last Film</h2>
+      <h2 style="margin-top:6px">Vader: Blackout</h2>
       <p class="muted" style="margin:8px 0 0;max-width:80ch">
-        Before Vader: Whiteout, our team produced <b>Vader: Blackout</b>. This section helps show the scale, visual ambition, and production value our club has already achieved.
+        Before Vader: Whiteout, our team produced <b>Vader: Blackout</b>, a previous large-scale fan film that showcases the visual ambition, production value, and execution this team is already capable of delivering.
       </p>
 
-      <div class="grid cols-2" style="margin-top:14px">
-        <div class="proofCard">
-          <h3>Why it matters</h3>
-          <ul class="miniList" style="margin-top:10px">
-            <li>Demonstrates that this team has already completed a large Star Wars fan film project</li>
-            <li>Shows the production style and cinematic look we are building from</li>
-            <li>Gives supporters confidence that Whiteout is backed by real execution, not just an idea</li>
-          </ul>
+      <div class="proofHero" style="margin-top:14px">
+        <div class="videoWrap">
+          <iframe
+            src="https://www.youtube.com/embed/JhXjD8EpkIc"
+            title="Vader: Blackout"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
         </div>
 
         <div class="proofCard">
-          <h3>Suggested section title options</h3>
+          <h3>Why this matters</h3>
           <ul class="miniList" style="margin-top:10px">
-            <li>From Our Last Film</li>
-            <li>Previous Production Highlights</li>
-            <li>What We Have Already Built</li>
-            <li>Production Legacy</li>
+            <li>Shows that this production team has already completed a major Star Wars fan film</li>
+            <li>Demonstrates the cinematic standard and tone we are building forward from</li>
+            <li>Gives supporters confidence that Whiteout is backed by real production experience</li>
+            <li>Highlights the kind of scale, polish, and commitment this club can actually execute</li>
           </ul>
+
+          <div style="margin-top:14px">
+            <a class="paybtn" href="https://youtu.be/JhXjD8EpkIc?si=QI6kt3gc10xs9KDx" target="_blank" rel="noopener">
+              Watch Vader: Blackout on YouTube
+            </a>
+          </div>
         </div>
       </div>
 
@@ -626,28 +658,28 @@
           <!-- Replace with actual image -->
           <!-- Example: <img src="assets/img/blackout-still-1.jpg" alt="Vader: Blackout still 1"> -->
           <div class="placeholderFrame">Vader: Blackout still 1</div>
-          <div class="stillOverlay">Hero still / poster-style image</div>
+          <div class="stillOverlay">Hero still / poster image</div>
         </div>
 
         <div class="stillSlot">
           <!-- Replace with actual image -->
           <!-- Example: <img src="assets/img/blackout-still-2.jpg" alt="Vader: Blackout still 2"> -->
           <div class="placeholderFrame">Vader: Blackout still 2</div>
-          <div class="stillOverlay">Action or lightsaber sequence</div>
+          <div class="stillOverlay">Action sequence still</div>
         </div>
 
         <div class="stillSlot">
           <!-- Replace with actual image -->
           <!-- Example: <img src="assets/img/blackout-still-3.jpg" alt="Vader: Blackout still 3"> -->
           <div class="placeholderFrame">Vader: Blackout still 3</div>
-          <div class="stillOverlay">Cinematic close-up / costume detail</div>
+          <div class="stillOverlay">Character close-up</div>
         </div>
 
         <div class="stillSlot">
           <!-- Replace with actual image -->
           <!-- Example: <img src="assets/img/blackout-still-4.jpg" alt="Vader: Blackout still 4"> -->
           <div class="placeholderFrame">Vader: Blackout still 4</div>
-          <div class="stillOverlay">Wide shot / production scale shot</div>
+          <div class="stillOverlay">Wide cinematic shot</div>
         </div>
       </div>
     </section>
