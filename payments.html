@@ -193,7 +193,6 @@
     @media (min-width:860px){
       .grid.cols-2{grid-template-columns:1.25fr .75fr}
       .grid.cols-3{grid-template-columns:repeat(3,1fr)}
-      .grid.cols-4{grid-template-columns:repeat(4,1fr)}
     }
 
     .heroGlow::before{
@@ -377,33 +376,40 @@
 
     .stillsGrid{
       display:grid;
-      gap:12px;
-      margin-top:14px;
+      gap:14px;
+      margin-top:16px;
+      grid-template-columns:1fr;
     }
-    @media (min-width:700px){
+    @media (min-width:760px){
       .stillsGrid{grid-template-columns:repeat(2,1fr)}
     }
-    @media (min-width:1040px){
-      .stillsGrid{grid-template-columns:repeat(4,1fr)}
+    @media (min-width:1180px){
+      .stillsGrid{grid-template-columns:repeat(3,1fr)}
     }
 
     .stillSlot{
       position:relative;
-      min-height:220px;
+      aspect-ratio:16 / 9;
       border-radius:18px;
       border:1px solid var(--line);
       overflow:hidden;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)),
-        radial-gradient(circle at 20% 20%, rgba(120,200,255,.10), transparent 40%),
-        rgba(0,0,0,.28);
-      box-shadow:0 14px 55px rgba(0,0,0,.22);
+      background:rgba(255,255,255,.03);
+      box-shadow:0 16px 55px rgba(0,0,0,.24);
+      isolation:isolate;
     }
-    html[data-theme="light"] .stillSlot{
+
+    .stillSlot::before{
+      content:"";
+      position:absolute;
+      inset:0;
       background:
-        linear-gradient(180deg, rgba(0,0,0,.03), rgba(0,0,0,.01)),
-        radial-gradient(circle at 20% 20%, rgba(14,165,233,.08), transparent 40%),
-        rgba(255,255,255,.65);
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,0) 35%, rgba(0,0,0,.18) 100%);
+      pointer-events:none;
+      z-index:2;
+    }
+    html[data-theme="light"] .stillSlot::before{
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,0) 35%, rgba(0,0,0,.05) 100%);
     }
 
     .stillSlot img{
@@ -411,32 +417,15 @@
       height:100%;
       object-fit:cover;
       display:block;
+      transform:scale(1.01);
+      transition:transform .35s ease;
+      filter:saturate(1.02) contrast(1.04) brightness(.98);
     }
-
-    .stillOverlay{
-      position:absolute;
-      inset:auto 0 0 0;
-      padding:12px;
-      background:linear-gradient(180deg, transparent, rgba(0,0,0,.72));
-      color:#fff;
-      font-size:.9rem;
-      font-weight:800;
-      letter-spacing:.02em;
+    .stillSlot:hover img{
+      transform:scale(1.04);
     }
-
-    .placeholderFrame{
-      width:100%;
-      height:100%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:20px;
-      color:var(--mute);
-      font-weight:900;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      font-size:.78rem;
+    html[data-theme="light"] .stillSlot img{
+      filter:saturate(1.02) contrast(1.02) brightness(1);
     }
 
     details.faq{
@@ -466,6 +455,7 @@
 
     @media (prefers-reduced-motion: reduce){
       #wbwCanvas{ display:none; }
+      .stillSlot img{transition:none}
     }
   </style>
 </head>
@@ -655,31 +645,19 @@
 
       <div class="stillsGrid">
         <div class="stillSlot">
-          <!-- Replace with actual image -->
-          <!-- Example: <img src="assets/img/blackout-still-1.jpg" alt="Vader: Blackout still 1"> -->
-          <div class="placeholderFrame">Vader: Blackout still 1</div>
-          <div class="stillOverlay">Hero still / poster image</div>
+          <img src="assets/img/Still1.jpg" alt="Vader: Blackout still 1">
         </div>
-
         <div class="stillSlot">
-          <!-- Replace with actual image -->
-          <!-- Example: <img src="assets/img/blackout-still-2.jpg" alt="Vader: Blackout still 2"> -->
-          <div class="placeholderFrame">Vader: Blackout still 2</div>
-          <div class="stillOverlay">Action sequence still</div>
+          <img src="assets/img/Still2.jpg" alt="Vader: Blackout still 2">
         </div>
-
         <div class="stillSlot">
-          <!-- Replace with actual image -->
-          <!-- Example: <img src="assets/img/blackout-still-3.jpg" alt="Vader: Blackout still 3"> -->
-          <div class="placeholderFrame">Vader: Blackout still 3</div>
-          <div class="stillOverlay">Character close-up</div>
+          <img src="assets/img/Still3.jpg" alt="Vader: Blackout still 3">
         </div>
-
         <div class="stillSlot">
-          <!-- Replace with actual image -->
-          <!-- Example: <img src="assets/img/blackout-still-4.jpg" alt="Vader: Blackout still 4"> -->
-          <div class="placeholderFrame">Vader: Blackout still 4</div>
-          <div class="stillOverlay">Wide cinematic shot</div>
+          <img src="assets/img/Still4.jpg" alt="Vader: Blackout still 4">
+        </div>
+        <div class="stillSlot">
+          <img src="assets/img/Still5.jpg" alt="Vader: Blackout still 5">
         </div>
       </div>
     </section>
