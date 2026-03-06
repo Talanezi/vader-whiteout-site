@@ -10,29 +10,18 @@
 
   <style>
     :root{
-      /* Monochrome-first with subtle blue hints */
       --ink:#f4f4f4;
       --mute:rgba(244,244,244,.68);
-
-      /* Borders are “almost gray” but slightly blue */
       --line:rgba(120,200,255,.14);
-
-      /* Near-black with faint blue bias */
       --bg0:#05060a;
       --bg1:#070a10;
-
       --radius:20px;
       --page-max:1200px;
       --page-gutter:24px;
-
-      /* DARKER glass boxes */
       --card:rgba(0,0,0,.44);
       --card2:rgba(0,0,0,.54);
-
-      /* ONLY blue accents */
       --accent:#78d7ff;
       --accent2:#2fa8ff;
-
       --shadow:0 18px 70px rgba(0,0,0,.42);
     }
 
@@ -40,16 +29,12 @@
       --ink:#0b0b0b;
       --mute:rgba(11,11,11,.62);
       --line:rgba(0,110,160,.18);
-
       --bg0:#fbfbfb;
       --bg1:#f0f3f6;
-
       --card:rgba(255,255,255,.72);
       --card2:rgba(255,255,255,.86);
-
       --accent:#0ea5e9;
       --accent2:#2563eb;
-
       --shadow:0 18px 70px rgba(0,0,0,.12);
     }
 
@@ -65,7 +50,6 @@
     }
     a{color:inherit;text-decoration:none}
 
-    /* Canvas behind everything */
     #wbwCanvas{
       position:fixed;
       inset:0;
@@ -75,7 +59,6 @@
       pointer-events:none;
     }
 
-    /* Subtle vignette above canvas (still monochrome) */
     body::before{
       content:"";
       position:fixed; inset:0;
@@ -98,7 +81,6 @@
       margin:16px auto;
     }
 
-    /* ===== Topnav ===== */
     header.topnav{
       position:sticky;top:0;z-index:10;
       padding:10px 16px;border-radius:14px;
@@ -149,7 +131,6 @@
     #themeToggle{display:inline-flex;align-items:center;justify-content:center;padding:10px}
     #themeToggle img{width:20px;height:20px;display:block}
 
-    /* ===== Sections / cards ===== */
     section.section{
       border:1px solid var(--line);
       border-radius:var(--radius);
@@ -173,23 +154,21 @@
       box-shadow:0 14px 55px rgba(0,0,0,.28);
     }
 
-    /* Fundraiser card: full-width + nicer spacing */
-.fundraiserCard{
-  width:100%;
-  padding:clamp(16px,2.2vw,22px);
-}
+    .fundraiserCard{
+      width:100%;
+      padding:clamp(16px,2.2vw,22px);
+    }
 
-/* Make Copy link button match Donate button height */
-.copyBtn{
-  padding:16px 18px;
-  border-radius:14px;
-  font-weight:950;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  height:100%;
-}
-    
+    .copyBtn{
+      padding:16px 18px;
+      border-radius:14px;
+      font-weight:950;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      height:100%;
+    }
+
     .k{
       text-transform:uppercase;
       letter-spacing:.28em;
@@ -214,9 +193,9 @@
     @media (min-width:860px){
       .grid.cols-2{grid-template-columns:1.25fr .75fr}
       .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+      .grid.cols-4{grid-template-columns:repeat(4,1fr)}
     }
 
-    /* Hero glow: keep monochrome + blue only */
     .heroGlow::before{
       content:"";
       position:absolute;inset:-2px;
@@ -233,7 +212,6 @@
         radial-gradient(900px 520px at 50% 120%, rgba(0,0,0,.04), transparent 70%);
     }
 
-    /* Progress */
     .chip{
       display:inline-flex;align-items:center;gap:8px;
       border:1px solid var(--line);
@@ -262,7 +240,6 @@
       filter:drop-shadow(0 0 10px rgba(120,200,255,.22));
     }
 
-    /* Donate panel */
     .payrow{display:grid;gap:12px;grid-template-columns:1fr auto}
     @media (max-width:860px){ .payrow{grid-template-columns:1fr} }
 
@@ -277,7 +254,6 @@
     }
     .paybtn:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
 
-    /* IMPORTANT: NO always-moving shimmer (this was the “fast line”). Only subtle glow. */
     .paybtn.btn-primary{
       background:#ffffff;
       color:#0b0b0b;
@@ -320,61 +296,6 @@
     }
     html[data-theme="light"] .trustPill{background:rgba(0,0,0,.03)}
 
-    /* Donors */
-    table.clean{width:100%;border-collapse:collapse}
-    table.clean th, table.clean td{padding:10px;border-bottom:1px solid var(--line);text-align:left}
-    table.clean th{
-      color:var(--mute);
-      font-weight:900;
-      letter-spacing:.10em;
-      text-transform:uppercase;
-      font-size:.78rem;
-    }
-
-    .donorBadges{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-    .badge{
-      display:flex;flex-direction:column;gap:2px;
-      min-width:220px;
-      border:1px solid var(--line);
-      border-radius:16px;
-      padding:12px;
-      background:rgba(255,255,255,.03);
-      transition:.2s;
-      backdrop-filter:blur(16px) saturate(140%);
-      -webkit-backdrop-filter:blur(16px) saturate(140%);
-    }
-    html[data-theme="light"] .badge{background:rgba(0,0,0,.03)}
-    .badge:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
-    .badge .bTop{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
-    .badge .bName{font-weight:950}
-    .badge .bAmt{font-weight:950}
-    .badge .bSub{color:var(--mute);font-size:.9rem}
-
-    /* Allocation */
-    .alloc{display:flex;flex-direction:column;gap:10px;margin-top:10px}
-    .allocItem{
-      border:1px solid var(--line);
-      border-radius:14px;
-      padding:10px 12px;
-      background:rgba(255,255,255,.03);
-      backdrop-filter:blur(16px) saturate(140%);
-      -webkit-backdrop-filter:blur(16px) saturate(140%);
-    }
-    html[data-theme="light"] .allocItem{background:rgba(0,0,0,.03)}
-    .allocTop{display:flex;justify-content:space-between;gap:10px;align-items:center}
-    .allocBar{
-      height:10px;border-radius:999px;border:1px solid var(--line);
-      overflow:hidden;margin-top:8px;
-      background:rgba(255,255,255,.06);
-    }
-    html[data-theme="light"] .allocBar{background:rgba(0,0,0,.06)}
-    .allocBar span{
-      display:block;height:100%;
-      background:linear-gradient(90deg,var(--accent),var(--accent2));
-      filter:drop-shadow(0 0 9px rgba(120,200,255,.20));
-    }
-
-    /* Tiers */
     .tierCard{
       border:1px solid var(--line);
       border-radius:16px;
@@ -411,7 +332,88 @@
       pointer-events:none;
     }
 
-    /* FAQ */
+    .miniList{
+      margin:10px 0 0;
+      padding-left:18px;
+      color:var(--mute);
+      font-size:.93rem;
+    }
+    .miniList li{margin:4px 0}
+
+    .proofCard{
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:rgba(255,255,255,.03);
+      padding:14px;
+      backdrop-filter:blur(16px) saturate(140%);
+      -webkit-backdrop-filter:blur(16px) saturate(140%);
+    }
+    html[data-theme="light"] .proofCard{background:rgba(0,0,0,.03)}
+
+    .stillsGrid{
+      display:grid;
+      gap:12px;
+      margin-top:14px;
+    }
+    @media (min-width:700px){
+      .stillsGrid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (min-width:1040px){
+      .stillsGrid{grid-template-columns:repeat(4,1fr)}
+    }
+
+    .stillSlot{
+      position:relative;
+      min-height:220px;
+      border-radius:18px;
+      border:1px solid var(--line);
+      overflow:hidden;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)),
+        radial-gradient(circle at 20% 20%, rgba(120,200,255,.10), transparent 40%),
+        rgba(0,0,0,.28);
+      box-shadow:0 14px 55px rgba(0,0,0,.22);
+    }
+    html[data-theme="light"] .stillSlot{
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.03), rgba(0,0,0,.01)),
+        radial-gradient(circle at 20% 20%, rgba(14,165,233,.08), transparent 40%),
+        rgba(255,255,255,.65);
+    }
+
+    .stillSlot img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .stillOverlay{
+      position:absolute;
+      inset:auto 0 0 0;
+      padding:12px;
+      background:linear-gradient(180deg, transparent, rgba(0,0,0,.72));
+      color:#fff;
+      font-size:.9rem;
+      font-weight:800;
+      letter-spacing:.02em;
+    }
+
+    .placeholderFrame{
+      width:100%;
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:20px;
+      color:var(--mute);
+      font-weight:900;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-size:.78rem;
+    }
+
     details.faq{
       border:1px solid var(--line);
       border-radius:16px;
@@ -451,7 +453,8 @@
     <nav class="navlinks">
       <a class="btn" href="https://talanezi.github.io/vader-whiteout-site/">Home</a>
       <a class="btn" href="https://talanezi.github.io/vader-whiteout-site/members/">Members</a>
-      <a class="btn" href="#donors">Donors</a>
+      <a class="btn" href="#tiers">Tiers</a>
+      <a class="btn" href="#blackout">Previous Film</a>
       <button class="btn" id="themeToggle" type="button" aria-label="Toggle theme">
         <img src="assets/img/dark.png" alt="Dark mode icon">
       </button>
@@ -463,10 +466,10 @@
     <section class="section heroGlow" id="top">
       <div class="k">Fundraiser</div>
       <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;margin-top:6px">
-        <div style="max-width:72ch">
+        <div style="max-width:76ch">
           <h1>Support the Production</h1>
           <p class="muted" style="margin:8px 0 0">
-            Vader: Whiteout is a non-commercial student project by the Star Wars Club at UC San Diego. Donations support production costs only.
+            Vader: Whiteout is a non-commercial student production by the Star Wars Club at UC San Diego. Donations directly support production costs and help us scale the film to the level it deserves.
           </p>
         </div>
         <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end">
@@ -477,86 +480,104 @@
       </div>
 
       <div class="grid" style="margin-top:14px">
-  <div class="card fundraiserCard">
-    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
-      <div class="icons" id="brandIcons"></div>
-      <div class="chip" id="pctChip">0% funded</div>
-    </div>
+        <div class="card fundraiserCard">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+            <div class="icons" id="brandIcons"></div>
+            <div class="chip" id="pctChip">0% funded</div>
+          </div>
 
-    <div class="statsRow">
-      <div class="bigAmt" id="raisedBig">$0</div>
-      <div class="muted">toward <b id="goalText">$10,000</b></div>
-    </div>
+          <div class="statsRow">
+            <div class="bigAmt" id="raisedBig">$0</div>
+            <div class="muted">toward <b id="goalText">$10,000</b></div>
+          </div>
 
-    <div class="bar" style="margin-top:10px">
-      <span id="progressFill" style="width:0%"></span>
-    </div>
+          <div class="bar" style="margin-top:10px">
+            <span id="progressFill" style="width:0%"></span>
+          </div>
 
-    <div class="payrow" style="margin-top:12px">
-      <a id="paypalMe" class="paybtn btn-primary" href="#" target="_blank" rel="noopener">
-        Donate now
-      </a>
-      <button id="copyPayPal" class="btn copyBtn" type="button">Copy link</button>
-    </div>
-    <div id="copyMsg" class="muted" style="margin-top:6px"></div>
+          <div class="payrow" style="margin-top:12px">
+            <a id="paypalMe" class="paybtn btn-primary" href="#" target="_blank" rel="noopener">
+              Donate now
+            </a>
+            <button id="copyPayPal" class="btn copyBtn" type="button">Copy link</button>
+          </div>
+          <div id="copyMsg" class="muted" style="margin-top:6px"></div>
 
-    <div class="trustRow">
-      <span class="trustPill">Secure checkout via platform</span>
-      <span class="trustPill">Non-commercial student film</span>
-      <span class="trustPill">Production costs only</span>
-    </div>
-  </div>
-</div>
-</section>
+          <div class="trustRow">
+            <span class="trustPill">Secure checkout via platform</span>
+            <span class="trustPill">Non-commercial student film</span>
+            <span class="trustPill">Production costs only</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section class="section" id="tiers">
       <div class="k">Ways to give</div>
       <h2 style="margin-top:6px">Donation Tiers</h2>
+      <p class="muted" style="margin:8px 0 0">
+        Recognition reflects the total amount received. Public credit is optional, and anonymous support is always available.
+      </p>
 
       <div class="grid cols-3" style="margin-top:12px">
         <div class="tierCard">
           <div class="tierTop">
             <div class="tierName">Community Supporter</div>
-            <div class="tierAmt">$0–$99</div>
+            <div class="tierAmt">$1–$99</div>
           </div>
-          <div class="muted" style="margin-top:8px">Listed under Special Thanks, unless you choose to stay anonymous.</div>
+          <div class="muted" style="margin-top:8px">
+            Credited as a Community Supporter in order of donation received.
+          </div>
+          <div class="tierTag">On-Screen Credit</div>
+        </div>
+
+        <div class="tierCard">
+          <div class="tierTop">
+            <div class="tierName">Merch Supporter</div>
+            <div class="tierAmt">$100+</div>
+          </div>
+          <div class="muted" style="margin-top:8px">
+            Includes Community Supporter recognition plus a shirt and special merch.
+          </div>
+          <div class="tierTag">Merch Included</div>
+        </div>
+
+        <div class="tierCard featured">
+          <div class="tierTop">
+            <div class="tierName">Production Patron</div>
+            <div class="tierAmt">$500–$1,499</div>
+          </div>
+          <div class="muted" style="margin-top:8px">
+            Receives Special Thanks credit and enters the highlighted supporter tier for the production.
+          </div>
           <div class="tierTag">Special Thanks</div>
         </div>
 
         <div class="tierCard featured">
           <div class="tierTop">
-            <div class="tierName">Film Contributor</div>
-            <div class="tierAmt">$100–$499</div>
-          </div>
-          <div class="muted" style="margin-top:8px">Special Thanks plus a digital thank-you from the production.</div>
-          <div class="tierTag">Most Popular</div>
-        </div>
-
-        <div class="tierCard">
-          <div class="tierTop">
-            <div class="tierName">Production Patron</div>
-            <div class="tierAmt">$500–$999</div>
-          </div>
-          <div class="muted" style="margin-top:8px">Upper-section thanks plus a BTS still from set.</div>
-          <div class="tierTag">Highlighted</div>
-        </div>
-
-        <div class="tierCard">
-          <div class="tierTop">
             <div class="tierName">Executive Friend</div>
-            <div class="tierAmt">$1,000–$1,999</div>
+            <div class="tierAmt">$1,500–$2,999</div>
           </div>
-          <div class="muted" style="margin-top:8px">Prominent thanks and an invite to a post-screening meet.</div>
-          <div class="tierTag">Premium</div>
+          <div class="muted" style="margin-top:8px">
+            Executive Friend credit, red carpet invitation, and exclusive supporter perks.
+          </div>
+          <div class="tierTag">Premium Access</div>
         </div>
 
-        <div class="tierCard">
+        <div class="tierCard featured">
           <div class="tierTop">
-            <div class="tierName">Institutional Ally</div>
-            <div class="tierAmt">$2,000+</div>
+            <div class="tierName">Executive Producer</div>
+            <div class="tierAmt">$3,000+</div>
           </div>
-          <div class="muted" style="margin-top:8px">Prominent thanks and a short production update report upon request.</div>
-          <div class="tierTag">Major Gift</div>
+          <div class="muted" style="margin-top:8px">
+            Top-tier producer credit for major backers helping bring the film to life.
+          </div>
+          <ul class="miniList">
+            <li>Only 2 credits available</li>
+            <li>Premium recognition tier</li>
+            <li>Best fit for serious investors/backers</li>
+          </ul>
+          <div class="tierTag">2 Slots Only</div>
         </div>
 
         <div class="tierCard">
@@ -564,44 +585,69 @@
             <div class="tierName">Anonymous</div>
             <div class="tierAmt">Any amount</div>
           </div>
-          <div class="muted" style="margin-top:8px">You can donate without public recognition.</div>
-          <div class="tierTag">Privacy</div>
+          <div class="muted" style="margin-top:8px">
+            Support the project privately without public recognition.
+          </div>
+          <div class="tierTag">Private Giving</div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="adopt">
-      <div class="k">Targeted support</div>
-      <h2 style="margin-top:6px">Adopt a Scene</h2>
-      <p class="muted" style="margin:8px 0 0">
-        Prefer funding something specific? Adopt a scene or sequence and we’ll recognize your support (or keep it anonymous).
+    <section class="section" id="blackout">
+      <div class="k">Previous production</div>
+      <h2 style="margin-top:6px">From Our Last Film</h2>
+      <p class="muted" style="margin:8px 0 0;max-width:80ch">
+        Before Vader: Whiteout, our team produced <b>Vader: Blackout</b>. This section helps show the scale, visual ambition, and production value our club has already achieved.
       </p>
 
-      <div class="grid cols-3" style="margin-top:12px">
-        <div class="tierCard">
-          <div class="tierTop"><div class="tierName">Scene Supporter</div><div class="tierAmt">$100–$299</div></div>
-          <div class="muted" style="margin-top:8px">Dialogue or day scene. “Scene Supported by [Name]”.</div>
+      <div class="grid cols-2" style="margin-top:14px">
+        <div class="proofCard">
+          <h3>Why it matters</h3>
+          <ul class="miniList" style="margin-top:10px">
+            <li>Demonstrates that this team has already completed a large Star Wars fan film project</li>
+            <li>Shows the production style and cinematic look we are building from</li>
+            <li>Gives supporters confidence that Whiteout is backed by real execution, not just an idea</li>
+          </ul>
         </div>
-        <div class="tierCard">
-          <div class="tierTop"><div class="tierName">Scene Builder</div><div class="tierAmt">$300–$699</div></div>
-          <div class="muted" style="margin-top:8px">Lighting-intensive or group scene. “Scene Builder – [Name]”.</div>
+
+        <div class="proofCard">
+          <h3>Suggested section title options</h3>
+          <ul class="miniList" style="margin-top:10px">
+            <li>From Our Last Film</li>
+            <li>Previous Production Highlights</li>
+            <li>What We Have Already Built</li>
+            <li>Production Legacy</li>
+          </ul>
         </div>
-        <div class="tierCard">
-          <div class="tierTop"><div class="tierName">Scene Patron</div><div class="tierAmt">$700–$999</div></div>
-          <div class="muted" style="margin-top:8px">Action or VFX-heavy scene. “Scene Patron – [Name]”.</div>
+      </div>
+
+      <div class="stillsGrid">
+        <div class="stillSlot">
+          <!-- Replace with actual image -->
+          <!-- Example: <img src="assets/img/blackout-still-1.jpg" alt="Vader: Blackout still 1"> -->
+          <div class="placeholderFrame">Vader: Blackout still 1</div>
+          <div class="stillOverlay">Hero still / poster-style image</div>
         </div>
-        <div class="tierCard featured">
-          <div class="tierTop"><div class="tierName">Sequence Ally</div><div class="tierAmt">$1,000+</div></div>
-          <div class="muted" style="margin-top:8px">Major multi-day sequence. “Sequence Supported by [Name/Org]”.</div>
-          <div class="tierTag">Big Impact</div>
+
+        <div class="stillSlot">
+          <!-- Replace with actual image -->
+          <!-- Example: <img src="assets/img/blackout-still-2.jpg" alt="Vader: Blackout still 2"> -->
+          <div class="placeholderFrame">Vader: Blackout still 2</div>
+          <div class="stillOverlay">Action or lightsaber sequence</div>
         </div>
-        <div class="tierCard">
-          <div class="tierTop"><div class="tierName">In-Kind Support</div><div class="tierAmt">Varies</div></div>
-          <div class="muted" style="margin-top:8px">Equipment, materials, locations, services. Email us to coordinate.</div>
+
+        <div class="stillSlot">
+          <!-- Replace with actual image -->
+          <!-- Example: <img src="assets/img/blackout-still-3.jpg" alt="Vader: Blackout still 3"> -->
+          <div class="placeholderFrame">Vader: Blackout still 3</div>
+          <div class="stillOverlay">Cinematic close-up / costume detail</div>
         </div>
-        <div class="tierCard">
-          <div class="tierTop"><div class="tierName">Share the Link</div><div class="tierAmt">Free</div></div>
-          <div class="muted" style="margin-top:8px">Sharing helps more than you think. Copy the link above and post it.</div>
+
+        <div class="stillSlot">
+          <!-- Replace with actual image -->
+          <!-- Example: <img src="assets/img/blackout-still-4.jpg" alt="Vader: Blackout still 4"> -->
+          <div class="placeholderFrame">Vader: Blackout still 4</div>
+          <div class="stillOverlay">Wide shot / production scale shot</div>
         </div>
       </div>
     </section>
@@ -617,14 +663,18 @@
         </details>
         <details class="faq">
           <summary>How are donations used?</summary>
-          <p class="muted">Donations support production costs only: wardrobe, props, locations/logistics, stunts safety, and post-production (color and sound).</p>
+          <p class="muted">Donations support production costs only, including wardrobe, props, locations, logistics, stunt safety, and post-production.</p>
         </details>
         <details class="faq">
           <summary>Can I donate anonymously?</summary>
-          <p class="muted">Yes. If you prefer, we can list you as “Anonymous” or not list your name at all.</p>
+          <p class="muted">Yes. You can be listed as “Anonymous” or not listed publicly at all.</p>
         </details>
         <details class="faq">
-          <summary>Who do I contact for larger gifts or in-kind support?</summary>
+          <summary>Are tier benefits based on the total amount donated?</summary>
+          <p class="muted">Yes. Recognition is based on the total amount received from a supporter.</p>
+        </details>
+        <details class="faq">
+          <summary>Who do I contact for larger gifts or special support?</summary>
           <p class="muted">Email <a href="mailto:Starwarsatucsd@gmail.com"><b>Starwarsatucsd@gmail.com</b></a> and we’ll coordinate.</p>
         </details>
       </div>
@@ -637,14 +687,10 @@
   </footer>
 
   <script>
-    // ====== EDIT THESE VALUES ONLY ======
     const PAYPAL_ME_LINK = 'https://gofund.me/e02d2bd90';
     const GOAL_DOLLARS   = 10000;
     const RAISED_DOLLARS = 3000;
-    // ====================================
 
-
-    // Donate link + copy
     const donateA = document.getElementById('paypalMe');
     if (donateA) donateA.href = PAYPAL_ME_LINK;
 
@@ -661,12 +707,10 @@
       });
     }
 
-    // Progress
     const pct = Math.max(0, Math.min(100, Math.round((RAISED_DOLLARS / GOAL_DOLLARS) * 100)));
     const fill = document.getElementById('progressFill');
     if (fill) fill.style.width = pct + '%';
 
-    // Labels
     const goalText = `$${GOAL_DOLLARS.toLocaleString()}`;
     const raisedText = `$${RAISED_DOLLARS.toLocaleString()}`;
 
@@ -682,7 +726,6 @@
     if (raisedBig) raisedBig.textContent = raisedText;
     if (goalT) goalT.textContent = goalText;
 
-    // Theme-aware payment icons (still monochrome)
     const ICONS = [
       { key:'paypal',     dark:'https://cdn.simpleicons.org/paypal/ffffff',      light:'https://cdn.simpleicons.org/paypal/0b0b0b' },
       { key:'applepay',   dark:'https://cdn.simpleicons.org/applepay/ffffff',    light:'https://cdn.simpleicons.org/applepay/0b0b0b' },
@@ -704,7 +747,6 @@
       });
     }
 
-    // Theme toggle
     (function(){
       const KEY = 'theme';
       const ICON_LIGHT = 'assets/img/light.svg';
@@ -742,7 +784,6 @@
   </script>
 
   <script>
-    // WBW CANVAS: blue threads only, stable diagonals, no “crash” speed.
     (function(){
       const root = document.documentElement;
       const canvas = document.getElementById('wbwCanvas');
@@ -759,7 +800,7 @@
           fog:[14,24,36],
           star:[235,245,255],
           thread:[120,200,255],
-          thread2:[120,200,255],   // no purple
+          thread2:[120,200,255],
           horizon:[145,220,255]
         },
         light:{
@@ -812,10 +853,7 @@
           threads.push({
             seed:rand(0,1000),
             phase:rand(0,Math.PI*2),
-
-            /* SLOWER + tighter range: no runaway line */
             speed:rand(0.000045,0.000070),
-
             width:rand(0.9,2.2),
             alpha:rand(0.06,0.14),
             tilt:rand(-0.78,0.78),
@@ -823,7 +861,6 @@
           });
         }
 
-        /* Stable diagonals: generate once (no frame-to-frame randomness) */
         diags.length=0;
         for(let k=0;k<DIAG_COUNT;k++){
           diags.push({
@@ -912,7 +949,6 @@
           ctx.stroke();
         }
 
-        /* Stable diagonals (no flicker) */
         ctx.shadowBlur = theme==='light'?10:14;
         ctx.lineWidth = 1.1;
         ctx.strokeStyle = rgba(p.thread, theme==='light'?0.045:0.065);
