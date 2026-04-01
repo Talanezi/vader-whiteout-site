@@ -1,6 +1,6 @@
 window.PRODUCTION_CONFIG = {
-  supabaseUrl: "https://YOUR_PROJECT_ID.supabase.co",
-  supabaseAnonKey: "YOUR_SUPABASE_ANON_PUBLIC_KEY",
+  supabaseUrl: "https://rsvqtvxnrsdwedkkadyi.supabase.co",
+  supabaseAnonKey: "sb_publishable_IGiOeVJ-OW-3AsyBvx4ZuQ_XA2hp4No",
 
   appName: "Vader: Whiteout Production Scheduler",
   publicHomeUrl: "https://vaderwhiteout.com",
