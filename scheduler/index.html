@@ -4,13 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="robots" content="noindex,nofollow" />
-  <title>Vader: Whiteout — Production Scheduler</title>
+  <title>Vader: Whiteout — Scheduler</title>
 
   <link rel="icon" type="image/png" href="/assets/img/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Crimson+Text:wght@700&display=swap" rel="stylesheet" />
-
   <link rel="stylesheet" href="./app.css" />
 </head>
 <body>
@@ -19,7 +18,7 @@
   <div class="title-banner">
     <div class="eyebrow">INTERNAL PRODUCTION TOOL</div>
     <h1>VADER: WHITEOUT</h1>
-    <p class="title-sub">Production Scheduler</p>
+    <p class="title-sub">Scheduler</p>
   </div>
 
   <header class="topnav">
@@ -27,69 +26,47 @@
       <a class="btn" id="homeLink" href="/">Home</a>
       <a class="btn" id="membersLink" href="/members/">Members</a>
       <a class="btn btn-primary" href="./index.html">Scheduler</a>
-      <button aria-label="Toggle light or dark mode" class="btn" id="themeToggle" type="button">
-        <span id="themeLabel">Theme</span>
-      </button>
+      <button class="btn" id="themeToggle" type="button">Theme</button>
       <button class="btn" id="signOutBtn" type="button" hidden>Sign out</button>
     </nav>
   </header>
 
   <main class="stage">
-    <section class="section hero">
-      <div class="hero-copy">
-        <div class="k">Purpose</div>
-        <h2 class="section-title">Save your defaults once. Stop re-entering everything.</h2>
-        <p class="muted">
-          This scheduler is built for Vader: Whiteout production logistics. Save your recurring availability, respond faster, and let the system rank the strongest windows for the people who matter most.
-        </p>
-        <div class="hero-badges">
-          <span class="chip">Login required</span>
-          <span class="chip">Production-only</span>
-          <span class="chip">Weighted results</span>
-        </div>
+    <section class="section" id="authSection"></section>
+
+    <div id="appShell" class="hidden">
+      <section class="section topbar-card">
+        <div id="topbar"></div>
+      </section>
+
+      <div class="workspace">
+        <aside class="sidebar">
+          <div class="card" id="profileCard"></div>
+          <div class="card" id="defaultsCard"></div>
+
+          <details class="card hidden" id="adminWrap">
+            <summary>Admin</summary>
+            <div id="adminCard" class="admin-inner"></div>
+          </details>
+        </aside>
+
+        <section class="section board-section">
+          <div id="boardTools"></div>
+          <div id="calendarWrap"></div>
+          <div id="boardActions"></div>
+        </section>
+
+        <aside class="summary-col">
+          <div class="card" id="rankedCard"></div>
+          <div class="card" id="peopleCard"></div>
+        </aside>
       </div>
-    </section>
-
-    <section class="section" id="authSection">
-      <div class="k">Access</div>
-      <h2 class="section-title">Login</h2>
-      <div id="authCard"></div>
-    </section>
-
-    <section class="section" id="profileSection" hidden>
-      <div class="k">You</div>
-      <h2 class="section-title">Profile</h2>
-      <div id="profileCard"></div>
-    </section>
-
-    <section class="section" id="defaultsSection" hidden>
-      <div class="k">Saved Time</div>
-      <h2 class="section-title">Recurring Availability Defaults</h2>
-      <div id="defaultsCard"></div>
-    </section>
-
-    <section class="section" id="pollSection" hidden>
-      <div class="k">Current Poll</div>
-      <h2 class="section-title">Respond</h2>
-      <div id="pollCard"></div>
-    </section>
-
-    <section class="section" id="resultsSection" hidden>
-      <div class="k">Ranking</div>
-      <h2 class="section-title">Results</h2>
-      <div id="resultsCard"></div>
-    </section>
-
-    <section class="section" id="adminSection" hidden>
-      <div class="k">Admin</div>
-      <h2 class="section-title">Create Polls</h2>
-      <div id="adminCard"></div>
-    </section>
+    </div>
   </main>
 
   <footer class="footer-shell">
-    <div>Vader: Whiteout Production Scheduler</div>
-    <div class="footer-sub">Internal use only • Not indexed • Built for production logistics</div>
+    <div>Internal scheduler for Vader: Whiteout production</div>
+    <div class="footer-sub">Noindex • Production-only • Shared availability</div>
   </footer>
 
   <script src="./config.js"></script>
