@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/scheduler/static/css/main.e7198d8d.css",
+    "main.js": "/scheduler/static/js/main.c59f8346.js",
+    "index.html": "/scheduler/index.html",
+    "main.e7198d8d.css.map": "/scheduler/static/css/main.e7198d8d.css.map",
+    "main.c59f8346.js.map": "/scheduler/static/js/main.c59f8346.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e7198d8d.css",
+    "static/js/main.c59f8346.js"
+  ]
+}
