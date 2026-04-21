@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>VADER: WHITEOUT — APPS</title>
+  <meta name="description" content="Internal Vader: Whiteout apps hub.">
+  <link rel="canonical" href="https://vaderwhiteout.com/apps/">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@700;800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root{
+      --ink:#f4f4f4; --mute:rgba(244,244,244,.68); --line:rgba(120,200,255,.14);
+      --bg0:#05060a; --bg1:#070a10; --radius:20px; --page-max:1200px; --page-gutter:24px;
+      --card:rgba(0,0,0,.44); --shadow:0 10px 30px rgba(0,0,0,.34);
+    }
+    *{box-sizing:border-box}
+    html,body{min-height:100%;margin:0}
+    body{
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 520px at 18% -10%, rgba(120,200,255,.08), transparent 60%),
+        radial-gradient(1200px 520px at 110% 15%, rgba(120,200,255,.05), transparent 62%),
+        linear-gradient(180deg, rgb(5,6,10), rgb(7,10,16));
+      font:16px/1.6 'Inter',system-ui,sans-serif;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(var(--page-max), calc(100% - (var(--page-gutter) * 2)));margin:0 auto;padding:22px 0 48px}
+    .topnav{
+      position:sticky;top:0;z-index:10;padding:10px 16px;border-radius:14px;border:1px solid var(--line);
+      background:rgba(0,0,0,.30);backdrop-filter:blur(16px) saturate(140%);display:flex;gap:12px;align-items:center;margin-bottom:18px
+    }
+    .brand{font-family:'Crimson Text', serif;font-size:1.5rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+    .navlinks{margin-left:auto;display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    .btn{padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.03);font-weight:700;transition:.25s;color:var(--ink)}
+    .btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.06);box-shadow:var(--shadow)}
+    .btn-primary{background:#fff;color:#0b0b0b;border-color:#fff;font-weight:800}
+    .section,.card{border:1px solid var(--line);border-radius:20px;background:var(--card);box-shadow:var(--shadow)}
+    .section{padding:clamp(16px,2.5vw,28px);margin:16px auto}
+    .k{text-transform:uppercase;letter-spacing:.28em;color:var(--mute);font-size:.82rem;margin:0 0 .6rem;font-weight:700}
+    h1,h2{font-family:'Crimson Text',serif;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+    h1{line-height:1.04;font-size:clamp(2rem,4vw,3.1rem);margin:0 0 12px}
+    .note{color:var(--mute);font-size:1.05rem;max-width:860px;margin:0}
+    .grid{display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:22px}
+    .card{padding:24px;min-height:220px}
+    .card h2{margin:0 0 10px;font-size:1.8rem;line-height:1.1}
+    .card p{margin:0 0 18px;color:var(--mute)}
+    @media (max-width: 900px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="topnav">
+      <a class="brand" href="/">VADER: WHITEOUT</a>
+      <nav class="navlinks">
+        <a class="btn" href="/">Home</a>
+      </nav>
+    </header>
+
+    <section class="section">
+      <p class="k">Vader Whiteout Team</p>
+      <h1>Apps</h1>
+      <p class="note">Internal production tools for scheduling, paperwork, and future production workflows.</p>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <p class="k">Current</p>
+        <h2>Scheduler</h2>
+        <p>Availability, schedule coordination, and meeting responses.</p>
+        <a class="btn btn-primary" href="/scheduler/">Open Scheduler</a>
+      </article>
+
+      <article class="card">
+        <p class="k">Current</p>
+        <h2>Production Desk</h2>
+        <p>Call sheets, production paperwork, and desk workflows.</p>
+        <a class="btn btn-primary" href="/productiondesk/#/">Open Production Desk</a>
+      </article>
+    </section>
+  </div>
+</body>
+</html>
