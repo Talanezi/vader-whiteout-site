@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
@@ -11,73 +11,263 @@
 
   <style>
     :root{
-      --ink:#f4f4f4; --mute:rgba(244,244,244,.68); --line:rgba(120,200,255,.14);
-      --bg0:#05060a; --bg1:#070a10; --radius:20px; --page-max:1200px; --page-gutter:24px;
-      --card:rgba(0,0,0,.44); --shadow:0 10px 30px rgba(0,0,0,.34);
+      --ink:#f4f4f4;
+      --mute:rgba(244,244,244,.68);
+      --line:rgba(120,200,255,.14);
+      --bg0:#05060a;
+      --bg1:#070a10;
+      --card:rgba(0,0,0,.44);
+      --shadow:0 18px 70px rgba(0,0,0,.42);
     }
+
     *{box-sizing:border-box}
     html,body{min-height:100%;margin:0}
     body{
       color:var(--ink);
-      background:
-        radial-gradient(1200px 520px at 18% -10%, rgba(120,200,255,.08), transparent 60%),
-        radial-gradient(1200px 520px at 110% 15%, rgba(120,200,255,.05), transparent 62%),
-        linear-gradient(180deg, rgb(5,6,10), rgb(7,10,16));
+      background:linear-gradient(180deg,var(--bg0),var(--bg1));
       font:16px/1.6 'Inter',system-ui,sans-serif;
     }
     a{color:inherit;text-decoration:none}
-    .wrap{width:min(var(--page-max), calc(100% - (var(--page-gutter) * 2)));margin:0 auto;padding:22px 0 48px}
-    .topnav{
-      position:sticky;top:0;z-index:10;padding:10px 16px;border-radius:14px;border:1px solid var(--line);
-      background:rgba(0,0,0,.30);backdrop-filter:blur(16px) saturate(140%);display:flex;gap:12px;align-items:center;margin-bottom:18px
+
+    .vw-app-shell{
+      position:relative;
+      min-height:100vh;
     }
-    .brand{font-family:'Crimson Text', serif;font-size:1.5rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
-    .navlinks{margin-left:auto;display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
-    .btn{padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.03);font-weight:700;transition:.25s;color:var(--ink)}
-    .btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.06);box-shadow:var(--shadow)}
-    .btn-primary{background:#fff;color:#0b0b0b;border-color:#fff;font-weight:800}
-    .section,.card{border:1px solid var(--line);border-radius:20px;background:var(--card);box-shadow:var(--shadow)}
-    .section{padding:clamp(16px,2.5vw,28px);margin:16px auto}
-    .k{text-transform:uppercase;letter-spacing:.28em;color:var(--mute);font-size:.82rem;margin:0 0 .6rem;font-weight:700}
-    h1,h2{font-family:'Crimson Text',serif;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
-    h1{line-height:1.04;font-size:clamp(2rem,4vw,3.1rem);margin:0 0 12px}
-    .note{color:var(--mute);font-size:1.05rem;max-width:860px;margin:0}
-    .grid{display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:22px}
-    .card{padding:24px;min-height:220px}
-    .card h2{margin:0 0 10px;font-size:1.8rem;line-height:1.1}
-    .card p{margin:0 0 18px;color:var(--mute)}
-    @media (max-width: 900px){.grid{grid-template-columns:1fr}}
+
+    .vw-app-shell::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:-1;
+      background:
+        radial-gradient(1100px 420px at 15% 0%, rgba(120,200,255,.08), transparent 62%),
+        radial-gradient(900px 360px at 100% 10%, rgba(120,200,255,.05), transparent 60%);
+    }
+
+    .vw-navbar{
+      position:sticky;
+      top:0;
+      z-index:10;
+      padding-top:.75rem;
+      padding-bottom:.75rem;
+      backdrop-filter:blur(16px) saturate(140%);
+      -webkit-backdrop-filter:blur(16px) saturate(140%);
+      background:rgba(0,0,0,.30);
+      border-bottom:1px solid var(--line);
+      box-shadow:var(--shadow);
+      min-height:84px;
+    }
+
+    .vw-navbar-inner{
+      width:min(1200px, calc(100% - 32px));
+      max-width:1200px;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .vw-brand{
+      font-family:'Crimson Text', serif;
+      font-size:clamp(1.2rem, 2vw, 1.6rem);
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--ink);
+      white-space:nowrap;
+    }
+
+    .vw-nav-links{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-left:auto;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .vw-nav-link{
+      padding:10px 14px;
+      border-radius:14px;
+      border:1px solid transparent;
+      font-weight:800;
+      letter-spacing:.03em;
+      color:var(--ink);
+    }
+
+    .vw-nav-link:hover,.vw-nav-link:focus{
+      color:#78d7ff;
+    }
+
+    .vw-main{
+      width:min(1200px, calc(100% - 32px));
+      max-width:1200px;
+      margin:0 auto;
+      padding-top:24px;
+      padding-bottom:48px;
+    }
+
+    .vw-section-card{
+      border:1px solid rgba(120,200,255,.14);
+      border-radius:20px;
+      padding:clamp(16px,2.5vw,28px);
+      background:rgba(0,0,0,.44);
+      box-shadow:0 10px 30px rgba(0,0,0,.34);
+      backdrop-filter:blur(18px) saturate(140%);
+      -webkit-backdrop-filter:blur(18px) saturate(140%);
+      margin-bottom:18px;
+      overflow:visible;
+    }
+
+    .vw-kicker{
+      text-transform:uppercase;
+      letter-spacing:.28em;
+      color:rgba(244,244,244,.68);
+      font-size:.8rem;
+      margin:0 0 .6rem;
+      font-weight:700;
+    }
+
+    .vw-page-title{
+      font-family:'Crimson Text', serif;
+      font-weight:800;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+      line-height:1.04;
+      font-size:clamp(1.9rem, 4.6vw, 3rem);
+      margin:0 0 12px;
+    }
+
+    .vw-page-note{
+      color:rgba(244,244,244,.72);
+      font-size:1.08rem;
+      max-width:920px;
+      margin:0;
+    }
+
+    .vw-dashboard-grid{
+      display:grid;
+      gap:18px;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      margin-bottom:18px;
+    }
+
+    .vw-module-card{
+      min-height:280px;
+    }
+
+    .vw-card-title{
+      margin:0 0 10px;
+      font-size:22px;
+      line-height:1.1;
+      font-weight:800;
+    }
+
+    .vw-card-copy{
+      margin:0 0 18px;
+      color:rgba(244,244,244,.72);
+      font-size:1.08rem;
+      max-width:38rem;
+    }
+
+    .vw-btn{
+      display:inline-block;
+      padding:10px 12px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:rgba(255,255,255,.03);
+      font-weight:800;
+      transition:.25s;
+      color:var(--ink);
+      cursor:pointer;
+    }
+
+    .vw-btn:hover{
+      transform:translateY(-2px);
+      background:rgba(255,255,255,.06);
+      box-shadow:0 10px 30px rgba(0,0,0,.34);
+    }
+
+    .vw-btn-primary{
+      background:#fff;
+      color:#0b0b0b;
+      border-color:#fff;
+    }
+
+    @media (max-width: 991px){
+      .vw-dashboard-grid{grid-template-columns:1fr}
+    }
+
+    @media (max-width: 767.98px){
+      .vw-navbar-inner{
+        gap:12px;
+        align-items:flex-start;
+        flex-direction:column;
+        width:min(1200px, calc(100% - 24px));
+      }
+
+      .vw-nav-links{
+        width:100%;
+        justify-content:flex-start;
+      }
+
+      .vw-nav-link{
+        padding-inline:10px;
+      }
+
+      .vw-main{
+        width:min(1200px, calc(100% - 24px));
+      }
+
+      .vw-page-title{
+        font-size:clamp(1.7rem, 8vw, 2.35rem);
+      }
+
+      .vw-section-card{
+        padding:20px;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header class="topnav">
-      <a class="brand" href="/">VADER: WHITEOUT</a>
-      <nav class="navlinks">
-      </nav>
+  <div class="vw-app-shell">
+    <header class="vw-navbar">
+      <div class="vw-navbar-inner">
+        <a class="vw-brand" href="/">Vader: Whiteout</a>
+
+        <nav class="vw-nav-links">
+          <a class="vw-nav-link" href="/scheduler/">Scheduler</a>
+          <a class="vw-nav-link" href="/productiondesk/#/">Production Desk</a>
+        </nav>
+      </div>
     </header>
 
-    <section class="section">
-      <p class="k">Vader Whiteout Team</p>
-      <h1>Apps</h1>
-      <p class="note">Internal production tools for scheduling, paperwork, and future production workflows.</p>
-    </section>
+    <main class="vw-main">
+      <section class="vw-section-card">
+        <p class="vw-kicker">Vader Whiteout Team</p>
+        <h1 class="vw-page-title">Apps</h1>
+        <p class="vw-page-note">
+          Internal production tools for scheduling, paperwork, and future production workflows.
+        </p>
+      </section>
 
-    <section class="grid">
-      <article class="card">
-        <p class="k">Current</p>
-        <h2>Scheduler</h2>
-        <p>Availability, schedule coordination, and meeting responses.</p>
-        <a class="btn btn-primary" href="/scheduler/">Open Scheduler</a>
-      </article>
+      <section class="vw-dashboard-grid">
+        <article class="vw-section-card vw-module-card">
+          <p class="vw-kicker">Current</p>
+          <h2 class="vw-card-title">Scheduler</h2>
+          <p class="vw-card-copy">Availability, schedule coordination, and meeting responses.</p>
+          <a class="vw-btn vw-btn-primary" href="/scheduler/">Open Scheduler</a>
+        </article>
 
-      <article class="card">
-        <p class="k">Current</p>
-        <h2>Production Desk</h2>
-        <p>Call sheets, production paperwork, and desk workflows.</p>
-        <a class="btn btn-primary" href="/productiondesk/#/">Open Production Desk</a>
-      </article>
-    </section>
+        <article class="vw-section-card vw-module-card">
+          <p class="vw-kicker">Current</p>
+          <h2 class="vw-card-title">Production Desk</h2>
+          <p class="vw-card-copy">Call sheets, production paperwork, and desk workflows.</p>
+          <a class="vw-btn vw-btn-primary" href="/productiondesk/#/">Open Production Desk</a>
+        </article>
+      </section>
+    </main>
   </div>
 </body>
 </html>
