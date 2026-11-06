@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.css": "/scheduler/static/css/main.b11e94e3.css",
-    "main.js": "/scheduler/static/js/main.e14b4165.js",
+    "main.css": "/scheduler/static/css/main.bb040026.css",
+    "main.js": "/scheduler/static/js/main.29019f59.js",
     "index.html": "/scheduler/index.html"
   },
   "entrypoints": [
-    "static/css/main.b11e94e3.css",
-    "static/js/main.e14b4165.js"
+    "static/css/main.bb040026.css",
+    "static/js/main.29019f59.js"
   ]
 }
